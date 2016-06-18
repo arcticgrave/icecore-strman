@@ -141,4 +141,15 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el -> assertFalse(contains(el, "YO", true)));
   }
+
+  @Test
+  public void containsAll_shouldReturnTrueOnlyWhenAllNeedlesAreContainedInValue() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt yo",
+      "yogurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertTrue(containsAll(el, new String[]{"yo", "gurt"})));
+  }
 }
