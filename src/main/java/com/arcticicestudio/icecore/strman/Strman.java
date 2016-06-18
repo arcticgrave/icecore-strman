@@ -469,6 +469,23 @@ public abstract class Strman {
     return value.toLowerCase().indexOf(needle.toLowerCase(), offset);
   }
 
+  /**
+   * Inserts the specified substring into the value at the provided index.
+   *
+   * @param value the input value
+   * @param substr the substring to insert
+   * @param index the index to insert the specified substring
+   * @return the string with the inserted substring
+   */
+  public static String insert(final String value, final String substr, final int index) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(substr, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (index > value.length()) {
+      return value;
+    }
+    return append(value.substring(0, index), substr, value.substring(index));
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
