@@ -659,6 +659,21 @@ public abstract class Strman {
   /**
    * Removes the specified prefix from the value.
    *
+   * <p>
+   *   The search is case sensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param prefix the prefix to remove
+   * @return the value without the specified prefix
+   */
+  public static String removeLeft(final String value, final String prefix) {
+    return removeLeft(value, prefix, true);
+  }
+
+  /**
+   * Removes the specified prefix from the value.
+   *
    * @param value the value to search
    * @param prefix the prefix to remove
    * @param caseSensitive the case sensitivity
