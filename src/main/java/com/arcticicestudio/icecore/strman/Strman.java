@@ -28,6 +28,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.strman;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
@@ -344,6 +345,17 @@ public abstract class Strman {
     String lowCaseValue = value.toLowerCase();
     String lowCasePrefix = prefix.toLowerCase();
     return lowCaseValue.startsWith(lowCasePrefix) ? value : prefix + value;
+  }
+
+  /**
+   * Decodes data encoded with MIME base64.
+   *
+   * @param value the data to decode
+   * @return the decoded data
+   */
+  public static String base64Decode(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return new String(Base64.getDecoder().decode(value));
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
