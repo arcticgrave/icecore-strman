@@ -164,7 +164,7 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that the needle is contained in the value.
+   * Verifies that the needle is contained in the the value.
    *
    * @param value the value to search
    * @param needle the needle to find
@@ -180,7 +180,7 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that all needles are contained in value.
+   * Verifies that all needles are contained in the value.
    *
    * <p>
    *   The search is case insensitive.
@@ -196,7 +196,7 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that all needles are contained in value.
+   * Verifies that all needles are contained in the value.
    *
    * @param value the value to search
    * @param needles the needles to find
@@ -209,7 +209,7 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that one or more of needles are contained in value.
+   * Verifies that one or more of needles are contained in the value.
    *
    * <p>
    *   This is case insensitive.
@@ -224,7 +224,7 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that one or more of needles are contained in value.
+   * Verifies that one or more of needles are contained in the value.
    *
    * @param value the value to search
    * @param needles the needles to find
@@ -234,6 +234,20 @@ public abstract class Strman {
   public static boolean containsAny(final String value, final String[] needles, final boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return Arrays.stream(needles).anyMatch(needle -> contains(value, needle, caseSensitive));
+  }
+
+  /**
+   * Count the number of times a substring appears in the value.
+   *
+   * @param value the value to search
+   * @param subStr the substring to find
+   * @param caseSensitive the case sensitivity
+   * @param allowOverlapping the overlapping behavior
+   * @return the count of times the substring exists
+   */
+  public static long countSubstr(final String value, final String subStr, final boolean caseSensitive, boolean allowOverlapping) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return countSubstr(caseSensitive ? value : value.toLowerCase(), caseSensitive ? subStr : subStr.toLowerCase(), allowOverlapping, 0L);
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
