@@ -202,4 +202,15 @@ public class StrmanTest {
   public void countSubstr_shouldCountSubStrCountCaseSensitiveWithOverlapInString() throws Exception {
     assertThat(countSubstr("aaaAAAaaa", "AAA", true, true), equalTo(1L));
   }
+
+  @Test
+  public void countSubstrTestFixture_caseSensitiveTrueAndOverlappingFalse() throws Exception {
+    String[] fixture = {
+      "aaaaaAaaAA",
+      "faaaAAaaaaAA",
+      "aaAAaaaaafA",
+      "AAaaafaaaaAAAA"
+    };
+    Arrays.stream(fixture).forEach(el -> assertThat(countSubstr(el, "a", true, false), equalTo(7L)));
+  }
 }
