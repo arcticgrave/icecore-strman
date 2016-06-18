@@ -481,4 +481,15 @@ public class StrmanTest {
     assertTrue(isString("string"));
     assertTrue(isString(""));
   }
+
+  @Test
+  public void lastIndexOf_shouldFindIndexOfNeedle() throws Exception {
+    final String value = "yogurtyogurt";
+    assertThat(lastIndexOf(value, "y"), equalTo(6));
+    assertThat(lastIndexOf(value, "o"), equalTo(7));
+    assertThat(lastIndexOf(value, "g"), equalTo(8));
+    assertThat(lastIndexOf(value, "u"), equalTo(9));
+    assertThat(lastIndexOf(value, "r"), equalTo(10));
+    assertThat(lastIndexOf(value, "f"), equalTo(-1));
+  }
 }
