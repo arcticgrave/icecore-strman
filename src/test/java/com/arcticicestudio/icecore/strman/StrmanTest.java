@@ -492,4 +492,15 @@ public class StrmanTest {
     assertThat(lastIndexOf(value, "r"), equalTo(10));
     assertThat(lastIndexOf(value, "f"), equalTo(-1));
   }
+
+  @Test
+  public void lastIndexOf_shouldFindIndexOfNeedleCaseInsensitive() throws Exception {
+    final String value = "yogurtyogurt";
+    assertThat(lastIndexOf(value, "Y", false), equalTo(6));
+    assertThat(lastIndexOf(value, "O", false), equalTo(7));
+    assertThat(lastIndexOf(value, "G", false), equalTo(8));
+    assertThat(lastIndexOf(value, "U", false), equalTo(9));
+    assertThat(lastIndexOf(value, "R", false), equalTo(10));
+    assertThat(lastIndexOf(value, "F", false), equalTo(-1));
+  }
 }
