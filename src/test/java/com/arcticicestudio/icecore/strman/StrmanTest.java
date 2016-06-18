@@ -377,4 +377,12 @@ public class StrmanTest {
   public void format_shouldThrowExceptionWhenStringDoesNotExist() throws Exception {
     assertThat(format("{1} {0}"), equalTo("{1} {0}"));
   }
+
+  @Test
+  public void hexDecode_shouldDecodeHexCodeToString() throws Exception {
+    assertThat(decodeHex("6f22"), equalTo("漢"));
+    assertThat(decodeHex("0041"), equalTo("A"));
+    assertThat(decodeHex("00c1"), equalTo("Á"));
+    assertThat(decodeHex("00410041"), equalTo("AA"));
+  }
 }
