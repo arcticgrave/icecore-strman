@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 import java.util.StringJoiner;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
@@ -830,6 +831,25 @@ public abstract class Strman {
   public static String rightTrim(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return value.replaceAll("\\s+$", "");
+  }
+
+  /**
+   * Randomly orders the characters of the given string.
+   *
+   * @param value the input string
+   * @return the shuffled string
+   */
+  public static String shuffle(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    String[] chars = chars(value);
+    Random random = new Random();
+    for (int i = 0; i < chars.length; i++) {
+      int r = random.nextInt(chars.length);
+      String tmp = chars[i];
+      chars[i] = chars[r];
+      chars[r] = tmp;
+    }
+    return Arrays.stream(chars).collect(joining());
   }
 
   /**
