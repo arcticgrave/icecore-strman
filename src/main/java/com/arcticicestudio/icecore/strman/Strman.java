@@ -689,6 +689,17 @@ public abstract class Strman {
     return fx.apply(value.toLowerCase(), prefix.toLowerCase());
   }
 
+  /**
+   * Removes all non-word characters.
+   *
+   * @param value the input value
+   * @return the value without non-word characters
+   */
+  public static String removeNonWords(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.replaceAll("[^\\w]+", "");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
