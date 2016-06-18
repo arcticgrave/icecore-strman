@@ -241,6 +241,17 @@ public abstract class Strman {
    *
    * @param value the value to search
    * @param subStr the substring to find
+   * @return the count of times the substring exists
+   */
+  public static long countSubstr(final String value, final String subStr) {
+    return countSubstr(value, subStr, true, false);
+  }
+
+  /**
+   * Count the number of times a substring appears in the value.
+   *
+   * @param value the value to search
+   * @param subStr the substring to find
    * @param caseSensitive the case sensitivity
    * @param allowOverlapping the overlapping behavior
    * @return the count of times the substring exists
