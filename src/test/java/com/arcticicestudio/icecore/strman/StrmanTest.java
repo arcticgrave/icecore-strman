@@ -450,4 +450,12 @@ public class StrmanTest {
     assertThat(isUpperCase("Yo"), equalTo(false));
     assertThat(isUpperCase("yogurt"), equalTo(false));
   }
+
+  @Test
+  public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
+    assertThat(last("yo", 2), equalTo("yo"));
+    assertThat(last("yogurt", 4), equalTo("gurt"));
+    assertThat(last("", 3), equalTo(""));
+    assertThat(last("y", 3), equalTo("y"));
+  }
 }
