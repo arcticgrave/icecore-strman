@@ -438,6 +438,16 @@ public abstract class Strman {
     return result;
   }
 
+  /**
+   * Returns the first character of the value.
+   *
+   * @param value the input value
+   * @return the first character
+   */
+  public static String head(final String value) {
+    return first(value, 1);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
