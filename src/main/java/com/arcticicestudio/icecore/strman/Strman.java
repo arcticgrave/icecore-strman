@@ -601,6 +601,17 @@ public abstract class Strman {
     return value.replaceAll("^\\s+", "");
   }
 
+  /**
+   * Returns the length of the value.
+   *
+   * @param value the input value
+   * @return the length of the value
+   */
+  public static int length(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.length();
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
