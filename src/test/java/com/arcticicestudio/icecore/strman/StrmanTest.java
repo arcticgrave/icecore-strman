@@ -503,4 +503,10 @@ public class StrmanTest {
     assertThat(lastIndexOf(value, "R", false), equalTo(10));
     assertThat(lastIndexOf(value, "F", false), equalTo(-1));
   }
+
+  @Test
+  public void leftTrim_shouldRemoveSpacesOnLeft() throws Exception {
+    assertThat(leftTrim("     yogurt"), equalTo("yogurt"));
+    assertThat(leftTrim("     yogurt  "), equalTo("yogurt  "));
+  }
 }
