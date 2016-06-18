@@ -1003,12 +1003,6 @@ public abstract class Strman {
     return value.split("\\W+");
   }
 
-  private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
-    if (predicate.test(value)) {
-      throw new IllegalArgumentException(supplier.get());
-    }
-  }
-
   private static long countSubstr(String value, String subStr, boolean allowOverlapping, long count) {
     int position = value.indexOf(subStr);
     if (position == -1) {
@@ -1021,5 +1015,19 @@ public abstract class Strman {
       offset = position + 1;
     }
     return countSubstr(value.substring(offset), subStr, allowOverlapping, ++count);
+  }
+
+  private static String decode(final String value, final int digits, final int radix) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Arrays
+      .stream(value.split("(?<=\\G.{" + digits + "})"))
+      .map(data -> String.valueOf(Character.toChars(Integer.parseInt(data, radix))))
+      .collect(joining());
+  }
+
+  private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
+    if (predicate.test(value)) {
+      throw new IllegalArgumentException(supplier.get());
+    }
   }
 }
