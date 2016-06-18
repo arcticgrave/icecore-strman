@@ -267,7 +267,7 @@ public class StrmanTest {
   }
 
   @Test
-  public void ensureLeft_shouldEnsureValueStartsWithFoo() throws Exception {
+  public void ensureLeft_shouldEnsureStringStartsWithFoo() throws Exception {
     String[] fixture = {
       "yogurt",
       "gurt"
@@ -277,8 +277,15 @@ public class StrmanTest {
   }
 
   @Test
-  public void ensureLeft_notCaseSensitive_shouldEnsureValueStartsWithFoo() throws Exception {
+  public void ensureLeft_notCaseSensitive_shouldEnsureStringStartsWithFoo() throws Exception {
     assertThat(ensureLeft("yogurt", "YO", false), equalTo("yogurt"));
     assertThat(ensureLeft("gurt", "YO", false), equalTo("YOgurt"));
+  }
+
+  @Test
+  public void base64Decode_shouldDecodeABase64DecodedStringToString() throws Exception {
+    assertThat(base64Decode("c3RybWFu"), equalTo("strman"));
+    assertThat(base64Decode("eW8="), equalTo("yo"));
+    assertThat(base64Decode("Z3VydA=="), equalTo("gurt"));
   }
 }
