@@ -566,4 +566,16 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el -> assertThat(removeNonWords(el), equalTo("yogurt")));
   }
+
+  @Test
+  public void removeRight_shouldRemoveStringFromRight() throws Exception {
+    final String[] fixture = {
+      "yogurt",
+      "yo"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(removeRight(el, "gurt"), equalTo("yo")));
+    assertThat(removeRight("gurtyo", "gurt"), equalTo("gurtyo"));
+    assertThat(removeRight("gurtgurt", "gurt"), equalTo("gurt"));
+  }
 }
