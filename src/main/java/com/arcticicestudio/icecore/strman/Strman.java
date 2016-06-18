@@ -871,6 +871,18 @@ public abstract class Strman {
   }
 
   /**
+   * Transforms a string into the "camelCase" spelling.
+   *
+   * @param value the value to be transformed
+   * @return the "camelCase"-transformed string
+   */
+  public static String toCamelCase(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    String str = toStudlyCase(value);
+    return str.substring(0, 1).toLowerCase() + str.substring(1);
+  }
+
+  /**
    * Transforms a string into the "StudlyCaps" spelling.
    *
    * @param value the value to be transformed
