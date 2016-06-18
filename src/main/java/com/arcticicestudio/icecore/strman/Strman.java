@@ -619,6 +619,17 @@ public abstract class Strman {
    * @param prepends the strings to prepend
    * @return the value with the prepended strings
    */
+  public static String prepend(final String value, final String... prepends) {
+    return prependArray(value, prepends);
+  }
+
+  /**
+   * Prepends the specified strings to the value.
+   *
+   * @param value the input value
+   * @param prepends the strings to prepend
+   * @return the value with the prepended strings
+   */
   public static String prependArray(final String value, final String[] prepends) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     if (prepends == null || prepends.length == 0) {
