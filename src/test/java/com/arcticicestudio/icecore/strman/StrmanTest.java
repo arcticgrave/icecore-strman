@@ -192,4 +192,9 @@ public class StrmanTest {
   public void countSubstr_shouldCountSubStrCountCaseSensitiveWithoutOverlapInString() throws Exception {
     assertThat(countSubstr("aaaAAAaaa", "aaa"), equalTo(2L));
   }
+
+  @Test
+  public void countSubstr_shouldCountSubStrCountCaseInsensitiveWithOverlapInString() throws Exception {
+    assertThat(countSubstr("aaaAAAaaa", "aaa", false, true), equalTo(7L));
+  }
 }
