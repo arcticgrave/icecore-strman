@@ -86,4 +86,10 @@ public class StrmanTest {
     assertThat(between("<span>foo</span><span>bar</span>", "<span>", "</span>"), arrayContaining("foo", "bar"));
   }
 
+  @Test
+  public void between_shouldReturnFullStringWhenStartAndEndDoesNotExist() throws Exception {
+    assertThat(between("[abc][def]", "{", "}"), arrayContaining("[abc][def]"));
+    assertThat(between("", "{", "}"), arrayContaining(""));
+  }
+
 }
