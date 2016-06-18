@@ -833,6 +833,41 @@ public abstract class Strman {
   }
 
   /**
+   * Securely truncates the string, not cutting a word in half.
+   *
+   * <p>
+   *   Always returns the last full word.
+   * </p>
+   *
+   * @param value the input string
+   * @param length the maximal size of the truncated string
+   * @param filler the value that will be added to the end
+   * @return the truncated string
+   */
+  public static String truncateSafe(final String value, final int length, final String filler) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (length == 0) {
+      return "";
+    }
+    if (length >= value.length()) {
+      return value;
+    }
+
+    String[] words = words(value);
+    StringJoiner result = new StringJoiner(" ");
+    int spaceCount = 0;
+    for (String word : words) {
+      if (result.length() + word.length() + filler.length() + spaceCount > length) {
+        break;
+      } else {
+        result.add(word);
+        spaceCount++;
+      }
+    }
+    return append(result.toString(), filler);
+  }
+
+  /**
    * Splits a string to words.
    *
    * @param value the string to split
