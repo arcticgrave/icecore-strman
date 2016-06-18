@@ -554,4 +554,16 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el -> assertThat(removeLeft(el, "YO", false), equalTo("gurt")));
   }
+
+  @Test
+  public void removeNonWords_shouldRemoveAllNonWordsFromInputString() throws Exception {
+
+    final String[] fixture = {
+      "yo gurt",
+      "yo&gurt-",
+      "yogurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(removeNonWords(el), equalTo("yogurt")));
+  }
 }
