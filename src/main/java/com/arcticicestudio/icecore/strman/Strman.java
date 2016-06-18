@@ -27,6 +27,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
+import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -56,8 +57,8 @@ public abstract class Strman {
   /**
    * Appends Strings to value.
    *
-   * @param value The initial String
-   * @param appends An array of strings to append
+   * @param value the initial String
+   * @param appends an array of strings to append
    * @return The full String
    */
   public static String append(final String value, final String... appends) {
@@ -67,8 +68,8 @@ public abstract class Strman {
   /**
    * Appends an array of {@code String} to value.
    *
-   * @param value The initial String
-   * @param appends An array of strings to append
+   * @param value the initial String
+   * @param appends an array of strings to append
    * @return the full String
    */
   public static String appendArray(final String value, final String[] appends) {
@@ -81,6 +82,30 @@ public abstract class Strman {
       joiner.add(append);
     }
     return value + joiner.toString();
+  }
+
+  /**
+   * Gets the character at index.
+   *
+   * <p>
+   *   This method will take care of negative indexes.
+   *   The valid value of index is between -(length-1) to (length-1).
+   *   For values which don't fall under this range {@code Optional.empty} will be returned
+   * </p>
+   *
+   * @param value the input value
+   * @param index the location
+   * @return an {@link Optional} String if found else empty
+   */
+  public static Optional<String> at(final String value, int index) {
+    if (value == null || value.isEmpty()) {
+      return Optional.empty();
+    }
+    int length = value.length();
+    if (index < 0) {
+      index = length + index;
+    }
+    return (index < length && index >= 0) ? Optional.of(String.valueOf(value.charAt(index))) : Optional.empty();
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
