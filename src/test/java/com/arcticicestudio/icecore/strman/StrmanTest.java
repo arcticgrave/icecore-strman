@@ -467,4 +467,12 @@ public class StrmanTest {
     assertThat(leftPad("0001", "0", 5), equalTo("00001"));
     assertThat(leftPad("00001", "0", 5), equalTo("00001"));
   }
+
+  @Test
+  public void isString_shouldBeFalseWhenStringIsNotString() throws Exception {
+    assertFalse(isString(1));
+    assertFalse(isString(false));
+    assertFalse(isString(1.2));
+    assertFalse(isString(new String[]{}));
+  }
 }
