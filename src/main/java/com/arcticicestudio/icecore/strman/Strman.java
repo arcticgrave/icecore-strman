@@ -484,6 +484,17 @@ public abstract class Strman {
   }
 
   /**
+   * Verifies if the value consists of lower case characters.
+   *
+   * @param value the value to verify
+   * @return {@code true} if the value consists of lower case characters, {@code false} otherwise
+   */
+  public static boolean isLowerCase(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Objects.equals(value, value.toLowerCase());
+  }
+
+  /**
    * Verifies if the value consists of upper case characters.
    *
    * @param value the value to verify
