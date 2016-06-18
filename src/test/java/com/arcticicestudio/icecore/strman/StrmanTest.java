@@ -683,4 +683,14 @@ public class StrmanTest {
     assertThat(shuffle(""), equalTo(""));
     assertThat(shuffle("s"), equalTo("s"));
   }
+
+  @Test
+  public void surround_shouldSurroundStringWithPrefixAndSuffix() throws Exception {
+    assertThat(surround("yo", "gurt", null), equalTo("gurtyogurt"));
+    assertThat(surround("coconut", "***", null), equalTo("***coconut***"));
+    assertThat(surround("", ">", null), equalTo(">>"));
+    assertThat(surround("yogurt", "", null), equalTo("yogurt"));
+    assertThat(surround("s", null, null), equalTo("s"));
+    assertThat(surround("div", "<", ">"), equalTo("<div>"));
+  }
 }
