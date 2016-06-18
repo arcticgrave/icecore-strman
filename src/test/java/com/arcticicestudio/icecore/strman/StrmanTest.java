@@ -49,26 +49,26 @@ import static org.junit.Assert.assertTrue;
 public class StrmanTest {
 
   @Test
-  public void append_shouldAppendStringsToEndOfValue() throws Exception {
+  public void append_shouldAppendStringsToEndOfString() throws Exception {
     assertThat(append("y", "o", "g", "u", "r", "t"), equalTo("yogurt"));
     assertThat(append("yogurt"), equalTo("yogurt"));
     assertThat(append("", "yogurt"), equalTo("yogurt"));
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void append_shouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
+  public void append_shouldThrowIllegalArgumentExceptionWhenStringIsNull() throws Exception {
     append(null);
   }
 
   @Test
-  public void appendArray_shouldAppendStringArrayToEndOfValue() throws Exception {
+  public void appendArray_shouldAppendStringArrayToEndOfString() throws Exception {
     assertThat(appendArray("y", new String[]{"o", "g", "u", "r", "t"}), equalTo("yogurt"));
     assertThat(appendArray("yogurt", new String[]{}), equalTo("yogurt"));
     assertThat(appendArray("", new String[]{"yogurt"}), equalTo("yogurt"));
   }
 
   @Test(expected = IllegalArgumentException.class)
-  public void appendArray_ShouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
+  public void appendArray_ShouldThrowIllegalArgumentExceptionWhenStringIsNull() throws Exception {
     appendArray(null, new String[]{});
   }
 
@@ -143,7 +143,7 @@ public class StrmanTest {
   }
 
   @Test
-  public void containsAll_shouldReturnTrueOnlyWhenAllNeedlesAreContainedInValue() throws Exception {
+  public void containsAll_shouldReturnTrueOnlyWhenAllNeedlesAreContainedInString() throws Exception {
     String[] fixture = {
       "yo gurt",
       "gurt yo",
@@ -154,12 +154,22 @@ public class StrmanTest {
   }
 
   @Test
-  public void containsAll_shouldReturnFalseOnlyWhenAllNeedlesAreNotContainedInValue() throws Exception {
+  public void containsAll_shouldReturnFalseOnlyWhenAllNeedlesAreNotContainedInString() throws Exception {
     String[] fixture = {
       "yo gurt",
       "gurt yo",
       "yogurt"
     };
     Arrays.stream(fixture).forEach(el -> assertFalse(containsAll(el, new String[]{"YO", "gurt"}, true)));
+  }
+
+  @Test
+  public void containsAny_shouldReturnTrueWhenAnyOfSearchNeedleExistInInputString() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt yo",
+      "yogurt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertTrue(containsAny(el, new String[]{"yo", "gurt", "coconut"})));
   }
 }
