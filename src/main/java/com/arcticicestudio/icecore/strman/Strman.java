@@ -313,6 +313,16 @@ public abstract class Strman {
   }
 
   /**
+   * Decodes a hexadecimal unicode (4 digits) string.
+   *
+   * @param value the value to decode
+   * @return the decoded string
+   */
+  public static String decodeHex(final String value) {
+    return decode(value, 4, 16);
+  }
+
+  /**
    * Tests if the value ends with the specified string.
    *
    * <p>
