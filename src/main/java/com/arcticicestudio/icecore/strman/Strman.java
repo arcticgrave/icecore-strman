@@ -700,6 +700,20 @@ public abstract class Strman {
     return value.replaceAll("[^\\w]+", "");
   }
 
+  /**
+   * Removes the specified suffix from the value.
+   *
+   * @param value the value to search
+   * @param suffix the suffix to remove
+   * @param caseSensitive the case sensitivity
+   * @return the value without the specified suffix
+   */
+  public static String removeRight(final String value, final String suffix, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(suffix, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return endsWith(value, suffix, caseSensitive) ? value.substring(0, value.toLowerCase().lastIndexOf(suffix.toLowerCase())) : value;
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
