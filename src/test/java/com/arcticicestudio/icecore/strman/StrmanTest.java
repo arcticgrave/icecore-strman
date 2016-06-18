@@ -509,4 +509,12 @@ public class StrmanTest {
     assertThat(leftTrim("     yogurt"), equalTo("yogurt"));
     assertThat(leftTrim("     yogurt  "), equalTo("yogurt  "));
   }
+
+  @Test
+  public void prepend_shouldPrependStrings() throws Exception {
+    assertThat(prepend("t", "y", "o", "g", "u", "r"), equalTo("yogurt"));
+    assertThat(prepend("yogurt"), equalTo("yogurt"));
+    assertThat(prepend("", "yogurt"), equalTo("yogurt"));
+    assertThat(prepend("gurt", "yo"), equalTo("yogurt"));
+  }
 }
