@@ -323,13 +323,23 @@ public abstract class Strman {
   }
 
   /**
-   * Encodes a string to a binary unicode (16 digits) string.
+   * Encodes a string into the binary unicode (16 digits) format.
    *
    * @param value the value to encode
    * @return the encoded string in binary format
    */
   public static String encodeBin(final String value) {
     return encode(value, 16, 2);
+  }
+
+  /**
+   * Encodes a string into the decimal unicode (5 digits) format.
+   *
+   * @param value the value to encode
+   * @return the encoded string in decimal format
+   */
+  public static String encodeDec(final String value) {
+    return encode(value, 5, 10);
   }
 
   /**
