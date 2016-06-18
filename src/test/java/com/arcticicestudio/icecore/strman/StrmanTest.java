@@ -48,4 +48,9 @@ public class StrmanTest {
     assertThat(append("yogurt"), equalTo("yogurt"));
     assertThat(append("", "yogurt"), equalTo("yogurt"));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void append_shouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
+    append(null);
+  }
 }
