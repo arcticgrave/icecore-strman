@@ -703,6 +703,21 @@ public abstract class Strman {
   /**
    * Removes the specified suffix from the value.
    *
+   * <p>
+   *   The search is case sensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param suffix the suffix to remove
+   * @return the value without the specified suffix
+   */
+  public static String removeRight(final String value, final String suffix) {
+    return removeRight(value, suffix, true);
+  }
+
+  /**
+   * Removes the specified suffix from the value.
+   *
    * @param value the value to search
    * @param suffix the suffix to remove
    * @param caseSensitive the case sensitivity
