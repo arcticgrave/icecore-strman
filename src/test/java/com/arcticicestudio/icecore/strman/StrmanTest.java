@@ -224,4 +224,9 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertThat(countSubstr(el, "A", false, false), equalTo(7L)));
   }
+
+  @Test
+  public void countSubstrTestFixture_caseSensitiveTrueAndOverlappingTrue() throws Exception {
+    assertThat(countSubstr("aaa", "aa", true, true), equalTo(2L));
+  }
 }
