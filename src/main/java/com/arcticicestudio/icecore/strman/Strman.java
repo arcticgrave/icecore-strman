@@ -27,6 +27,9 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+
 /**
  * Manipulates- and modifies strings.
  *
@@ -39,4 +42,11 @@ package com.arcticicestudio.icecore.strman;
  * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
  * @since 0.1.0
  */
-public abstract class Strman {}
+public abstract class Strman {
+
+  private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
+    if (predicate.test(value)) {
+      throw new IllegalArgumentException(supplier.get());
+    }
+  }
+}
