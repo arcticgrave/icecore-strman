@@ -172,4 +172,14 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertTrue(containsAny(el, new String[]{"yo", "gurt", "coconut"})));
   }
+
+  @Test
+  public void containsAny_shouldReturnFalseWhenNoneOfSearchNeedleExistInInputString() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt yo",
+      "yogurt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertFalse(containsAny(el, new String[]{"YO", "GURT", "Coconut"}, true)));
+  }
 }
