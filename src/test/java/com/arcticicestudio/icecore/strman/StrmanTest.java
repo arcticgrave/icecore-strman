@@ -229,4 +229,13 @@ public class StrmanTest {
   public void countSubstrTestFixture_caseSensitiveTrueAndOverlappingTrue() throws Exception {
     assertThat(countSubstr("aaa", "aa", true, true), equalTo(2L));
   }
+
+  @Test
+  public void endsWith_caseSensitive_ShouldBeTrueWhenStringEndsWithSearchStr() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "gurt")));
+  }
 }
