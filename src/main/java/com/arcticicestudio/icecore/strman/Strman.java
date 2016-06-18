@@ -729,6 +729,17 @@ public abstract class Strman {
     return endsWith(value, suffix, caseSensitive) ? value.substring(0, value.toLowerCase().lastIndexOf(suffix.toLowerCase())) : value;
   }
 
+  /**
+   * Removes all spaces from the value.
+   *
+   * @param value the input value
+   * @return the value without spaces
+   */
+  public static String removeSpaces(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.replaceAll("\\s", "");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
