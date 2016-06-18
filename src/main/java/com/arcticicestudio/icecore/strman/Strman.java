@@ -293,6 +293,16 @@ public abstract class Strman {
   }
 
   /**
+   * Decodes a binary unicode (16 digits) string.
+   *
+   * @param value the value to decode
+   * @return the decoded string
+   */
+  public static String decodeBin(final String value) {
+    return decode(value, 16, 2);
+  }
+
+  /**
    * Tests if the value ends with the specified string.
    *
    * <p>
