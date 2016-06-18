@@ -612,6 +612,25 @@ public abstract class Strman {
     return value.length();
   }
 
+  /**
+   * Prepends the specified strings to the value.
+   *
+   * @param value the input value
+   * @param prepends the strings to prepend
+   * @return the value with the prepended strings
+   */
+  public static String prependArray(final String value, final String[] prepends) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (prepends == null || prepends.length == 0) {
+      return value;
+    }
+    StringJoiner joiner = new StringJoiner("");
+    for (String prepend : prepends) {
+      joiner.add(prepend);
+    }
+    return joiner.toString() + value;
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
