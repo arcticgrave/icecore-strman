@@ -27,6 +27,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
+import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -44,10 +45,32 @@ import java.util.function.Supplier;
  */
 public abstract class Strman {
 
+  private static final Predicate<String> NULL_STRING_PREDICATE = str -> str == null;
+  private static final Supplier<String> NULL_STRING_MSG_SUPPLIER = () -> "'value' should be not null.";
+
   /*
    * Avoid class instantiation.
    */
   private Strman() {}
+
+  /**
+   * Appends an array of {@code String} to value.
+   *
+   * @param value The initial String
+   * @param appends An array of strings to append
+   * @return the full String
+   */
+  public static String appendArray(final String value, final String[] appends) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (appends == null || appends.length == 0) {
+      return value;
+    }
+    StringJoiner joiner = new StringJoiner("");
+    for (String append : appends) {
+      joiner.add(append);
+    }
+    return value + joiner.toString();
+  }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
