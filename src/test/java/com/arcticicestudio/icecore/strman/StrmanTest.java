@@ -36,6 +36,7 @@ import static com.arcticicestudio.icecore.strman.Strman.*;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
+import static org.hamcrest.collection.IsArrayWithSize.emptyArray;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -524,5 +525,11 @@ public class StrmanTest {
     assertThat(prependArray("yogurt", new String[0]), equalTo("yogurt"));
     assertThat(prependArray("", new String[]{"yogurt"}), equalTo("yogurt"));
     assertThat(prependArray("gurt", new String[]{"yo"}), equalTo("yogurt"));
+  }
+
+  @Test
+  public void removeEmptyStrings_shouldRemoveEmptyStrings() throws Exception {
+    assertThat(removeEmptyStrings(new String[]{"aa", "", "   ", "bb", "cc", null}), arrayContaining("aa", "bb", "cc"));
+    assertThat(removeEmptyStrings(new String[0]), emptyArray());
   }
 }
