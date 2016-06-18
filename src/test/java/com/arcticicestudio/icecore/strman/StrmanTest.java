@@ -693,4 +693,22 @@ public class StrmanTest {
     assertThat(surround("s", null, null), equalTo("s"));
     assertThat(surround("div", "<", ">"), equalTo("<div>"));
   }
+
+  @Test
+  public void toCamelCase_shouldConvertStringToCamelCase() throws Exception {
+    String[] fixture = {
+      "CamelCase",
+      "camelCase",
+      "Camel case",
+      "Camel  case",
+      "camel Case",
+      "camel-case",
+      "-camel--case",
+      "camel_case",
+      "     camel_case",
+    };
+    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toCameCase(%s) should be camelCase", el), toCamelCase(el), equalTo("camelCase")));
+
+    assertThat(toCamelCase("c"), equalTo("c"));
+  }
 }
