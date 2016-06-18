@@ -61,4 +61,9 @@ public class StrmanTest {
     assertThat(appendArray("yogurt", new String[]{}), equalTo("yogurt"));
     assertThat(appendArray("", new String[]{"yogurt"}), equalTo("yogurt"));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void appendArray_ShouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
+    appendArray(null, new String[]{});
+  }
 }
