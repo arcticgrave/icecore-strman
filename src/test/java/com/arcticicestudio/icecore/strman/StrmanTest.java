@@ -327,4 +327,12 @@ public class StrmanTest {
     assertThat(decodeDec("00193"), equalTo("Á"));
     assertThat(decodeDec("0006500065"), equalTo("AA"));
   }
+
+  @Test
+  public void decEncode_shouldEncodeStringToDecimal() throws Exception {
+    assertThat(encodeDec("漢"), equalTo("28450"));
+    assertThat(encodeDec("A"), equalTo("00065"));
+    assertThat(encodeDec("Á"), equalTo("00193"));
+    assertThat(encodeDec("AA"), equalTo("0006500065"));
+  }
 }
