@@ -211,6 +211,21 @@ public abstract class Strman {
   /**
    * Verifies that one or more of needles are contained in value.
    *
+   * <p>
+   *   This is case insensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param needles the needles to find
+   * @return {@code true} if any needle is found, {@code false} otherwise
+   */
+  public static boolean containsAny(final String value, final String[] needles) {
+    return containsAny(value, needles, false);
+  }
+
+  /**
+   * Verifies that one or more of needles are contained in value.
+   *
    * @param value the value to search
    * @param needles the needles to find
    * @param caseSensitive the case sensitivity
