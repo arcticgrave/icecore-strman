@@ -266,6 +266,19 @@ public abstract class Strman {
    *
    * @param value the value to search
    * @param search the string to find
+   * @param caseSensitive the case sensitivity
+   * @return {@code true} if the search string is found, {@code false} otherwise
+   */
+  public static boolean endsWith(final String value, final String search, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return endsWith(value, search, value.length(), caseSensitive);
+  }
+
+  /**
+   * Tests if the value ends with the specified string.
+   *
+   * @param value the value to search
+   * @param search the string to find
    * @param position the position to be searched up to
    * @param caseSensitive the case sensitivity
    * @return @return {@code true} if the search string is found, {@code false} otherwise
