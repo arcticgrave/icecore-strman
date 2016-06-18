@@ -313,6 +313,22 @@ public abstract class Strman {
    *
    * <p>
    *   The prefix will be prepended if it doesn't exist.
+   *   The search is case sensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param prefix the prefix to find
+   * @return the string with the specified prefix
+   */
+  public static String ensureLeft(final String value, final String prefix) {
+    return ensureLeft(value, prefix, true);
+  }
+
+  /**
+   * Ensures that the value begins with the specified prefix.
+   *
+   * <p>
+   *   The prefix will be prepended if it doesn't exist.
    * </p>
    *
    * @param value the value to search
