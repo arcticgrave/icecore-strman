@@ -287,6 +287,8 @@ public class StrmanTest {
     assertThat(base64Decode("c3RybWFu"), equalTo("strman"));
     assertThat(base64Decode("eW8="), equalTo("yo"));
     assertThat(base64Decode("Z3VydA=="), equalTo("gurt"));
+    assertThat(base64Decode("YsOhciE="), equalTo("bár!"));
+    assertThat(base64Decode("5ryi"), equalTo("漢"));
   }
 
   @Test
@@ -294,6 +296,8 @@ public class StrmanTest {
     assertThat(base64Encode("strman"), equalTo("c3RybWFu"));
     assertThat(base64Encode("yo"), equalTo("eW8="));
     assertThat(base64Encode("gurt"), equalTo("Z3VydA=="));
+    assertThat(base64Encode("bár!"), equalTo("YsOhciE="));
+    assertThat(base64Encode("漢"), equalTo("5ryi"));
   }
 
   @Test
@@ -302,13 +306,25 @@ public class StrmanTest {
       decodeBin("000000000111001100000000011101000000000001110010000000000110110100000000011000010000000001101110"),
       equalTo("strman"));
 
+    assertThat(decodeBin("0110111100100010"), equalTo("漢"));
     assertThat(decodeBin("0000000001000001"), equalTo("A"));
+    assertThat(decodeBin("0000000011000001"), equalTo("Á"));
     assertThat(decodeBin("00000000010000010000000001000001"), equalTo("AA"));
   }
 
   @Test
   public void binEncode_shouldEncodeAStringToBinaryFormat() throws Exception {
+    assertThat(encodeBin("漢"), equalTo("0110111100100010"));
     assertThat(encodeBin("A"), equalTo("0000000001000001"));
+    assertThat(encodeBin("Á"), equalTo("0000000011000001"));
     assertThat(encodeBin("AA"), equalTo("00000000010000010000000001000001"));
+  }
+
+  @Test
+  public void decDecode_shouldDecodeDecimalStringToString() throws Exception {
+    assertThat(decodeDec("28450"), equalTo("漢"));
+    assertThat(decodeDec("00065"), equalTo("A"));
+    assertThat(decodeDec("00193"), equalTo("Á"));
+    assertThat(decodeDec("0006500065"), equalTo("AA"));
   }
 }
