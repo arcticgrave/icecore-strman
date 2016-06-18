@@ -620,4 +620,14 @@ public class StrmanTest {
     assertThat(replace("YO gurt", "yo", "gurt", false), equalTo("gurt gurt"));
     assertThat(replace("YO gurt yo", "yo", "gurt", false), equalTo("gurt gurt gurt"));
   }
+
+  @Test
+  public void reverse_shouldReverseInputString() throws Exception {
+    assertThat(reverse(""), equalTo(""));
+    assertThat(reverse("yo"), equalTo("oy"));
+    assertThat(reverse("yogurt"), equalTo("trugoy"));
+    assertThat(reverse("gurt"), equalTo("trug"));
+    assertThat(reverse("yo_"), equalTo("_oy"));
+    assertThat(reverse("y"), equalTo("y"));
+  }
 }
