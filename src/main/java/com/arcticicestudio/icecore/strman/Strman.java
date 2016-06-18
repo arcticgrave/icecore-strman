@@ -28,6 +28,7 @@ Arctic Versioning Specification (ArcVer)
 package com.arcticicestudio.icecore.strman;
 
 import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -653,6 +654,24 @@ public abstract class Strman {
       throw new IllegalArgumentException("Input array should not be null");
     }
     return Arrays.stream(strings).filter(str -> str != null && !str.trim().isEmpty()).toArray(String[]::new);
+  }
+
+  /**
+   * Removes the specified prefix from the value.
+   *
+   * @param value the value to search
+   * @param prefix the prefix to remove
+   * @param caseSensitive the case sensitivity
+   * @return the value without the specified prefix
+   */
+  public static String removeLeft(final String value, final String prefix, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(prefix, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    BiFunction<String, String, String> fx = (f, s) -> f.startsWith(s) ? f.replaceFirst(s, "") : f;
+    if (caseSensitive) {
+      return fx.apply(value, prefix);
+    }
+    return fx.apply(value.toLowerCase(), prefix.toLowerCase());
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
