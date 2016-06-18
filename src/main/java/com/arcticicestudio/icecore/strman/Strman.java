@@ -54,6 +54,17 @@ public abstract class Strman {
   private Strman() {}
 
   /**
+   * Appends Strings to value.
+   *
+   * @param value The initial String
+   * @param appends An array of strings to append
+   * @return The full String
+   */
+  public static String append(final String value, final String... appends) {
+    return appendArray(value, appends);
+  }
+
+  /**
    * Appends an array of {@code String} to value.
    *
    * @param value The initial String
