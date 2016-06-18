@@ -295,4 +295,14 @@ public class StrmanTest {
     assertThat(base64Encode("yo"), equalTo("eW8="));
     assertThat(base64Encode("gurt"), equalTo("Z3VydA=="));
   }
+
+  @Test
+  public void binDecode_shouldDecodeABinaryStringToAString() throws Exception {
+    assertThat(
+      decodeBin("000000000111001100000000011101000000000001110010000000000110110100000000011000010000000001101110"),
+      equalTo("strman"));
+
+    assertThat(decodeBin("0000000001000001"), equalTo("A"));
+    assertThat(decodeBin("00000000010000010000000001000001"), equalTo("AA"));
+  }
 }
