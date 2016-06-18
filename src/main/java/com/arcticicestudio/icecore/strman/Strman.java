@@ -907,6 +907,16 @@ public abstract class Strman {
   }
 
   /**
+   * Transforms a string into the "kebab-case" spelling.
+   *
+   * @param value the value to be transformed
+   * @return the "kebab-case"-transformed string
+   */
+  public static String toKebabCase(final String value) {
+    return toDecamelize(value, "-");
+  }
+
+  /**
    * Transforms a string into the "StudlyCaps" spelling.
    *
    * @param value the value to be transformed
