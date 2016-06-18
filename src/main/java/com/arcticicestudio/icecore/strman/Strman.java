@@ -358,6 +358,17 @@ public abstract class Strman {
     return new String(Base64.getDecoder().decode(value));
   }
 
+  /**
+   * Encodes data with MIME base64.
+   *
+   * @param value the data to encode
+   * @return the encoded String
+   */
+  public static String base64Encode(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Base64.getEncoder().encodeToString(value.getBytes());
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
