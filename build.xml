@@ -293,31 +293,6 @@ Glacier Apache Ant Project
       <available type="dir" searchparents="false" file="${src.main.resources}"/>
     </condition>
 
-    <!-- Base Project Assets (required) -->
-    <condition property="hasBaseProjectAssets">
-      <and>
-        <available type="file" searchparents="false" file="README.md"/>
-        <available type="file" searchparents="false" file="CHANGELOG.md"/>
-      </and>
-    </condition>
-    <fail unless:set="hasBaseProjectAssets" message="No base project assets available"/>
-
-    <!-- Optional Project Assets (optional) -->
-    <condition property="hasOptionalProjectAssets">
-      <or>
-        <available type="file" searchparents="false" file="COPYRIGHT.md"/>
-        <available type="file" searchparents="false" file="LICENSE.md"/>
-      </or>
-    </condition>
-
-    <!-- Base Odin Project Development Assets -->
-    <condition property="hasBaseOdinProjectDevelopmentAssets">
-      <and>
-        <istrue value="${config.assembly.odin}"/>
-        <available type="file" searchparents="false" file="odin.json"/>
-      </and>
-    </condition>
-
     <!-- Assembly Dependencies Prefix Configuration (required) -->
     <condition property="hasAssemblyDependenciesPrefixConfiguration">
       <isset property="assembly.dependencies.prefix"/>
@@ -468,23 +443,6 @@ Glacier Apache Ant Project
       <zipfileset dir="${build.main.resources}" prefix="resources">
         <include name="**/*"/>
       </zipfileset>
-
-      <!-- Base Project Assets (required)-->
-      <fileset if:set="hasBaseProjectAssets" dir="${basedir}">
-        <include name="README.md"/>
-        <include name="CHANGELOG.md"/>
-      </fileset>
-
-      <!-- Optional Project Assets (optional)-->
-      <fileset if:set="hasOptionalProjectAssets" dir="${basedir}">
-        <include name="COPYRIGHT.md"/>
-        <include name="LICENSE.md"/>
-      </fileset>
-
-      <!-- Base Odin Project Development Assets (required)-->
-      <fileset if:set="hasBaseOdinProjectDevelopmentAssets" dir="${basedir}">
-        <include name="odin.json"/>
-      </fileset>
     </jar>
     <!-- +- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [2.1.3]-+ -->
 
