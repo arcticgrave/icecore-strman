@@ -179,6 +179,22 @@ public abstract class Strman {
     return value.toLowerCase().contains(needle.toLowerCase());
   }
 
+  /**
+   * Verifies that all needles are contained in value.
+   *
+   * <p>
+   *   The search is case insensitive.
+   * </p>
+   *
+   * @param value the input String to search
+   * @param needles the needles to find
+   * @return {@code true} if all needles are found, {@code false} otherwise
+   */
+  public static boolean containsAll(final String value, final String[] needles) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Arrays.stream(needles).allMatch(needle -> contains(value, needle, true));
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
