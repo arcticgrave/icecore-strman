@@ -475,4 +475,10 @@ public class StrmanTest {
     assertFalse(isString(1.2));
     assertFalse(isString(new String[]{}));
   }
+
+  @Test
+  public void isString_shouldBeTrueWhenValueIsString() throws Exception {
+    assertTrue(isString("string"));
+    assertTrue(isString(""));
+  }
 }
