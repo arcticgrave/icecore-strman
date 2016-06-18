@@ -29,6 +29,7 @@ package com.arcticicestudio.icecore.strman;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import static com.arcticicestudio.icecore.strman.Strman.*;
@@ -96,5 +97,16 @@ public class StrmanTest {
   public void chars_shouldReturnAllCharactersInString() throws Exception {
     final String yogurt = "yogurt";
     assertThat(chars(yogurt), equalTo(new String[]{"y", "o", "g", "u", "r", "t"}));
+  }
+
+  @Test
+  public void collapseWhitespace_shouldReplaceConsecutiveWhitespaceWithSingleSpace() throws Exception {
+    String[] fixture = {
+      "yo    gurt",
+      "     yo     gurt    ",
+      " yo     gurt   ",
+      "    yo     gurt "
+    };
+    Arrays.stream(fixture).forEach(el -> assertThat(collapseWhitespace(el), equalTo("foo bar")));
   }
 }
