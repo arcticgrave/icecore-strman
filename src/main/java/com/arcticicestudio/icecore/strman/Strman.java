@@ -495,6 +495,19 @@ public abstract class Strman {
   }
 
   /**
+   * Checks whether the Object is a String.
+   *
+   * @param value the value to check
+   * @return {@code true} if the Object is a String, {@code false} otherwise
+   */
+  public static boolean isString(final Object value) {
+    if (Objects.isNull(value)) {
+      throw new IllegalArgumentException("value can't be null");
+    }
+    return value instanceof String;
+  }
+
+  /**
    * Verifies if the value consists of upper case characters.
    *
    * @param value the value to verify
