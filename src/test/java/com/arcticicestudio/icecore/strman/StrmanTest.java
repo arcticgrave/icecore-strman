@@ -92,4 +92,9 @@ public class StrmanTest {
     assertThat(between("", "{", "}"), arrayContaining(""));
   }
 
+  @Test
+  public void chars_shouldReturnAllCharactersInString() throws Exception {
+    final String yogurt = "yogurt";
+    assertThat(chars(yogurt), equalTo(new String[]{"y", "o", "g", "u", "r", "t"}));
+  }
 }
