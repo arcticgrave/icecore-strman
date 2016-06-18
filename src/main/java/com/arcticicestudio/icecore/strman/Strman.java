@@ -448,6 +448,27 @@ public abstract class Strman {
     return first(value, 1);
   }
 
+  /**
+   * Returns the index of the first occurrence of the specified needle.
+   *
+   * <p>
+   *   Returns a negative integer if the value is not found.
+   * </p>
+   *
+   * @param value the value to search
+   * @param needle the needle to find
+   * @param offset the offset to start searching from
+   * @param caseSensitive the case sensitivity
+   * @return the position of the first occurrence of the needle, negative integer if not found
+   */
+  public static int indexOf(final String value, final String needle, int offset, boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (caseSensitive) {
+      return value.indexOf(needle, offset);
+    }
+    return value.toLowerCase().indexOf(needle.toLowerCase(), offset);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
