@@ -275,4 +275,10 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el -> assertThat(ensureLeft(el, "yo"), equalTo("yogurt")));
   }
+
+  @Test
+  public void ensureLeft_notCaseSensitive_shouldEnsureValueStartsWithFoo() throws Exception {
+    assertThat(ensureLeft("yogurt", "YO", false), equalTo("yogurt"));
+    assertThat(ensureLeft("gurt", "YO", false), equalTo("YOgurt"));
+  }
 }
