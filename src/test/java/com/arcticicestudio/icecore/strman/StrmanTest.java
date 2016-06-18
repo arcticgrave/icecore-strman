@@ -9,7 +9,7 @@ email     development@arcticicestudio.com     +
 website   http://arcticicestudio.com          +
 copyright Copyright (C) 2016                  +
 created   2016-06-18 14:37 UTC+0200           +
-modified  2016-06-18 14:39 UTC+0200           +
+modified  2016-06-18 16:27 UTC+0200           +
 +++++++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -746,5 +746,22 @@ public class StrmanTest {
     };
 
     Arrays.stream(fixture).forEach(el -> assertThat(String.format("toKebabCase(%s) should be de-camelize", el), toKebabCase(el), equalTo("de-camelize")));
+  }
+
+  @Test
+  public void toSnakeCase_shouldSnakeCaseAString() throws Exception {
+    String[] fixture = {
+      "deCamelize",
+      "de-Camelize",
+      "de camelize",
+      "de  camelize",
+      "de Camelize",
+      "de-camelize",
+      "-de--camelize",
+      "de_camelize",
+      "     de_camelize"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
 }
