@@ -544,4 +544,14 @@ public class StrmanTest {
     assertThat(removeLeft("gurtyo", "yo"), equalTo("gurtyo"));
     assertThat(removeLeft("yoyo", "yo"), equalTo("yo"));
   }
+
+  @Test
+  public void removeLeft_shouldRemoveStringFromLeftCaseInSensitive() throws Exception {
+    final String[] fixture = {
+      "yogurt",
+      "gurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(removeLeft(el, "YO", false), equalTo("gurt")));
+  }
 }
