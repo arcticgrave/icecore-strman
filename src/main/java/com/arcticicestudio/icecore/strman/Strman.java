@@ -833,6 +833,25 @@ public abstract class Strman {
   }
 
   /**
+   * Unsecured truncation of the given string , cutting the independent string of the required position.
+   *
+   * @param value the input string
+   * @param length the size of the truncated string
+   * @param filler the value that will be added to the end
+   * @return the unsecured truncated string
+   */
+  public static String truncate(final String value, final int length, final String filler) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (length == 0) {
+      return "";
+    }
+    if (length >= value.length()) {
+      return value;
+    }
+    return append(value.substring(0, length - filler.length()), filler);
+  }
+
+  /**
    * Securely truncates the string, not cutting a word in half.
    *
    * <p>
@@ -842,7 +861,7 @@ public abstract class Strman {
    * @param value the input string
    * @param length the maximal size of the truncated string
    * @param filler the value that will be added to the end
-   * @return the truncated string
+   * @return the securely truncated string
    */
   public static String truncateSafe(final String value, final int length, final String filler) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
