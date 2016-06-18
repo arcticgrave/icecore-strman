@@ -27,6 +27,12 @@ Arctic Versioning Specification (ArcVer)
 
 package com.arcticicestudio.icecore.strman;
 
+import org.junit.Test;
+
+import static com.arcticicestudio.icecore.strman.Strman.append;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 /**
  * Tests the <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
  * public API class {@link Strman}.
@@ -34,4 +40,12 @@ package com.arcticicestudio.icecore.strman;
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
  */
-public class StrmanTest {}
+public class StrmanTest {
+
+  @Test
+  public void append_shouldAppendStringsToEndOfValue() throws Exception {
+    assertThat(append("y", "o", "g", "u", "r", "t"), equalTo("yogurt"));
+    assertThat(append("yogurt"), equalTo("yogurt"));
+    assertThat(append("", "yogurt"), equalTo("yogurt"));
+  }
+}
