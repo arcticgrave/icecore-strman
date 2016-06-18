@@ -538,6 +538,23 @@ public abstract class Strman {
    *
    * <p>
    *   Returns a negative integer if the value is not found.
+   *   The search runs backwards and is case sensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param needle the needle to find
+   * @return the position of the last occurrence of the needle, negative integer if not found
+   */
+  public static int lastIndexOf(final String value, final String needle) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return lastIndexOf(value, needle, value.length(), true);
+  }
+
+  /**
+   * Returns the index of the last occurrence of the specified needle.
+   *
+   * <p>
+   *   Returns a negative integer if the value is not found.
    *   The search runs backwards.
    * </p>
    *
