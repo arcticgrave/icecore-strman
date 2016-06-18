@@ -343,6 +343,16 @@ public abstract class Strman {
   }
 
   /**
+   * Encodes a string into the hexadecimal unicode (4 digits) format.
+   *
+   * @param value the value to encode
+   * @return the encoded string in hexadecimal format
+   */
+  public static String encodeHex(final String value) {
+    return encode(value, 4, 16);
+  }
+
+  /**
    * Tests if the value ends with the specified string.
    *
    * <p>
