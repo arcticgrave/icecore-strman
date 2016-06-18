@@ -894,6 +894,19 @@ public abstract class Strman {
   }
 
   /**
+   * Transforms a string into the decamelized form.
+   *
+   * @param value the value to be transformed
+   * @param chr the string to replace with
+   * @return the decamelized string
+   */
+  public static String toDecamelize(final String value, final String chr) {
+    String camelCasedString = toCamelCase(value);
+    String[] words = camelCasedString.split("(?=\\p{Upper})");
+    return Arrays.stream(words).map(w -> w.toLowerCase()).collect(joining(Optional.ofNullable(chr).orElse(" ")));
+  }
+
+  /**
    * Transforms a string into the "StudlyCaps" spelling.
    *
    * @param value the value to be transformed
