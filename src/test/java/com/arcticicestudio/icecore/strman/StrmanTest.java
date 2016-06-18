@@ -288,4 +288,11 @@ public class StrmanTest {
     assertThat(base64Decode("eW8="), equalTo("yo"));
     assertThat(base64Decode("Z3VydA=="), equalTo("gurt"));
   }
+
+  @Test
+  public void base64Encode_shouldEncodeAString() throws Exception {
+    assertThat(base64Encode("strman"), equalTo("c3RybWFu"));
+    assertThat(base64Encode("yo"), equalTo("eW8="));
+    assertThat(base64Encode("gurt"), equalTo("Z3VydA=="));
+  }
 }
