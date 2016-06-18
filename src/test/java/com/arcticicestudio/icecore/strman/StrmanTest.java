@@ -354,4 +354,13 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertThat(first(el, 2), equalTo("yo")));
   }
+
+  @Test
+  public void head_shouldReturnFirstCharOfString() throws Exception {
+    final String[] fixture = {
+      "yo", "yogurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(head(el), equalTo("y")));
+  }
 }
