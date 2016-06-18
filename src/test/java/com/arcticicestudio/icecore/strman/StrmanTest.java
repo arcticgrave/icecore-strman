@@ -532,4 +532,16 @@ public class StrmanTest {
     assertThat(removeEmptyStrings(new String[]{"aa", "", "   ", "bb", "cc", null}), arrayContaining("aa", "bb", "cc"));
     assertThat(removeEmptyStrings(new String[0]), emptyArray());
   }
+
+  @Test
+  public void removeLeft_shouldRemoveStringFromLeft() throws Exception {
+    final String[] fixture = {
+      "yogurt",
+      "gurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(removeLeft(el, "yo"), equalTo("gurt")));
+    assertThat(removeLeft("gurtyo", "yo"), equalTo("gurtyo"));
+    assertThat(removeLeft("yoyo", "yo"), equalTo("yo"));
+  }
 }
