@@ -853,6 +853,24 @@ public abstract class Strman {
   }
 
   /**
+   * Surrounds a string with the given prefix and suffix.
+   *
+   * <p>
+   *   If the suffix is empty or {@code null} the prefix will be used.
+   * </p>
+   *
+   * @param value the input value
+   * @param prefix the prefix
+   * @param suffix the suffix
+   * @return the string surrounded with the prefix and suffix
+   */
+  public static String surround(final String value, final String prefix, final String suffix) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    String optPrefix = Optional.ofNullable(prefix).orElse("");
+    return append(optPrefix, value, Optional.ofNullable(suffix).orElse(optPrefix));
+  }
+
+  /**
    * Unsecured truncation of the given string , cutting the independent string of the required position.
    *
    * @param value the input string
