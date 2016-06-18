@@ -640,4 +640,11 @@ public class StrmanTest {
     assertThat(rightPad("10000", "0", 5), equalTo("10000"));
     assertThat(rightPad("10000000", "0", 5), equalTo("10000000"));
   }
+
+  @Test
+  public void rightTrim_shouldRemoveSpacesFromTheRight() throws Exception {
+    assertThat(rightTrim("yogurt   "), equalTo("yogurt"));
+    assertThat(rightTrim("   yogurt"), equalTo("   yogurt"));
+    assertThat(rightTrim("yogurt"), equalTo("yogurt"));
+  }
 }
