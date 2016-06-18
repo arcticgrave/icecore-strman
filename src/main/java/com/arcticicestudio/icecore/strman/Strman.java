@@ -33,6 +33,8 @@ import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Manipulates- and modifies strings.
@@ -412,6 +414,28 @@ public abstract class Strman {
   public static String first(final String value, final int numberChars) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return value.substring(0, numberChars);
+  }
+
+  /**
+   * Formats a string using the specified parameters.
+   *
+   * @param value the value to be formatted
+   * @param params the parameters to be described in the string
+   * @return the formatted string
+   */
+  public static String format(final String value, String... params) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    Pattern p = Pattern.compile("\\{(\\w+)\\}");
+    Matcher m = p.matcher(value);
+    String result = value;
+    while (m.find()) {
+      int paramNumber = Integer.parseInt(m.group(1));
+      if (params == null || paramNumber >= params.length) {
+        throw new IllegalArgumentException("params does not have value for " + m.group());
+      }
+      result = result.replace(m.group(), params[paramNumber]);
+    }
+    return result;
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
