@@ -647,4 +647,18 @@ public class StrmanTest {
     assertThat(rightTrim("   yogurt"), equalTo("   yogurt"));
     assertThat(rightTrim("yogurt"), equalTo("yogurt"));
   }
+
+  @Test
+  public void truncateSafe_shouldSafelyTruncateStrings() throws Exception {
+    assertThat(truncateSafe("yo gurt", 0, "."), equalTo(""));
+    assertThat(truncateSafe("yo gurt", 3, "."), equalTo("yo."));
+    assertThat(truncateSafe("yo gurt", 2, "."), equalTo("."));
+    assertThat(truncateSafe("yo gurt", 1, "."), equalTo("."));
+    assertThat(truncateSafe("yo gurt", 7, "."), equalTo("yo gurt"));
+    assertThat(truncateSafe("yo gurt", 8, "."), equalTo("yo gurt"));
+    assertThat(truncateSafe("A lightweight module library.", 17, "..."), equalTo("A lightweight..."));
+    assertThat(truncateSafe("A lightweight module library.", 16, "..."), equalTo("A lightweight..."));
+    assertThat(truncateSafe("A lightweight module library.", 15, "..."), equalTo("A..."));
+    assertThat(truncateSafe("A lightweight module library.", 12, "..."), equalTo("A..."));
+  }
 }
