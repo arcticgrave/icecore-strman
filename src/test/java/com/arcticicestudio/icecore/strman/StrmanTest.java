@@ -29,8 +29,11 @@ package com.arcticicestudio.icecore.strman;
 
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static com.arcticicestudio.icecore.strman.Strman.append;
 import static com.arcticicestudio.icecore.strman.Strman.appendArray;
+import static com.arcticicestudio.icecore.strman.Strman.at;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -65,5 +68,15 @@ public class StrmanTest {
   @Test(expected = IllegalArgumentException.class)
   public void appendArray_ShouldThrowIllegalArgumentExceptionWhenValueIsNull() throws Exception {
     appendArray(null, new String[]{});
+  }
+
+  @Test
+  public void at_shouldFindCharacterAtIndex() throws Exception {
+    assertThat(at("yogurt", 0), equalTo(Optional.of("y")));
+    assertThat(at("yogurt", 1), equalTo(Optional.of("o")));
+    assertThat(at("yogurt", -1), equalTo(Optional.of("t")));
+    assertThat(at("yogurt", -2), equalTo(Optional.of("r")));
+    assertThat(at("yogurt", 10), equalTo(Optional.empty()));
+    assertThat(at("yogurt", -10), equalTo(Optional.empty()));
   }
 }
