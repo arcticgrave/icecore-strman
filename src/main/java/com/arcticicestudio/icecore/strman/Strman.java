@@ -49,4 +49,18 @@ public abstract class Strman {
       throw new IllegalArgumentException(supplier.get());
     }
   }
+
+  private static long countSubstr(String value, String subStr, boolean allowOverlapping, long count) {
+    int position = value.indexOf(subStr);
+    if (position == -1) {
+      return count;
+    }
+    int offset;
+    if (!allowOverlapping) {
+      offset = position + subStr.length();
+    } else {
+      offset = position + 1;
+    }
+    return countSubstr(value.substring(offset), subStr, allowOverlapping, ++count);
+  }
 }
