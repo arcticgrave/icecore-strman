@@ -402,6 +402,18 @@ public abstract class Strman {
     return endsWith(value, suffix, caseSensitive) ? value : append(value, suffix);
   }
 
+  /**
+   * Returns the first specified number of characters of the value.
+   *
+   * @param value the value to search
+   * @param numberChars the number of characters to return
+   * @return the first specified number of characters
+   */
+  public static String first(final String value, final int numberChars) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.substring(0, numberChars);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
