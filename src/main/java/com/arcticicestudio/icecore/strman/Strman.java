@@ -27,10 +27,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.Optional;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -484,6 +481,17 @@ public abstract class Strman {
       return value;
     }
     return append(value.substring(0, index), substr, value.substring(index));
+  }
+
+  /**
+   * Verifies if the value consists of upper case characters.
+   *
+   * @param value the value to verify
+   * @return {@code true} if the value consists of upper case characters, {@code false} otherwise
+   */
+  public static boolean isUpperCase(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Objects.equals(value, value.toUpperCase());
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
