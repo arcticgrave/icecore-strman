@@ -458,4 +458,13 @@ public class StrmanTest {
     assertThat(last("", 3), equalTo(""));
     assertThat(last("y", 3), equalTo("y"));
   }
+
+  @Test
+  public void leftPad_shouldAddPaddingOnTheLeft() throws Exception {
+    assertThat(leftPad("1", "0", 5), equalTo("00001"));
+    assertThat(leftPad("01", "0", 5), equalTo("00001"));
+    assertThat(leftPad("001", "0", 5), equalTo("00001"));
+    assertThat(leftPad("0001", "0", 5), equalTo("00001"));
+    assertThat(leftPad("00001", "0", 5), equalTo("00001"));
+  }
 }
