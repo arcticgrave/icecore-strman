@@ -35,6 +35,7 @@ import java.util.Optional;
 import static com.arcticicestudio.icecore.strman.Strman.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -127,5 +128,17 @@ public class StrmanTest {
     };
 
     Arrays.stream(fixture).forEach(el -> assertTrue(contains(el, "YO")));
+  }
+
+  @Test
+  public void containsWithCaseSensitiveTrue_shouldReturnTrueWhenStringContainsNeedle() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt yo",
+      "yogurt",
+      "yo"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertFalse(contains(el, "YO", true)));
   }
 }
