@@ -871,6 +871,18 @@ public abstract class Strman {
   }
 
   /**
+   * Transforms a string into the "StudlyCaps" spelling.
+   *
+   * @param value the value to be transformed
+   * @return the "StudlyCaps"-transformed string
+   */
+  public static String toStudlyCase(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    String[] words = collapseWhitespace(value.trim()).split("\\s*(_|-|\\s)\\s*");
+    return Arrays.stream(words).filter(w -> !w.trim().isEmpty()).map(w -> head(w).toUpperCase() + tail(w)).collect(joining());
+  }
+
+  /**
    * Unsecured truncation of the given string , cutting the independent string of the required position.
    *
    * @param value the input string
