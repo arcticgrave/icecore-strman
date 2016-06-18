@@ -31,10 +31,9 @@ import org.junit.Test;
 
 import java.util.Optional;
 
-import static com.arcticicestudio.icecore.strman.Strman.append;
-import static com.arcticicestudio.icecore.strman.Strman.appendArray;
-import static com.arcticicestudio.icecore.strman.Strman.at;
+import static com.arcticicestudio.icecore.strman.Strman.*;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -79,4 +78,12 @@ public class StrmanTest {
     assertThat(at("yogurt", 10), equalTo(Optional.empty()));
     assertThat(at("yogurt", -10), equalTo(Optional.empty()));
   }
+
+  @Test
+  public void between_shouldReturnArrayWithStringsBetweenStartAndEnd() throws Exception {
+    assertThat(between("[abc][def]", "[", "]"), arrayContaining("abc", "def"));
+    assertThat(between("<span>foo</span>", "<span>", "</span>"), arrayContaining("foo"));
+    assertThat(between("<span>foo</span><span>bar</span>", "<span>", "</span>"), arrayContaining("foo", "bar"));
+  }
+
 }
