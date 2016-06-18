@@ -247,4 +247,13 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "GURT", false)));
   }
+
+  @Test
+  public void endsWith_caseSensitiveAtPosition_ShouldBeTrueWhenStringEndsWithSearchString() throws Exception {
+    String[] fixture = {
+      "yo gurtt",
+      "gurtt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "gurt", el.length() - 1, true)));
+  }
 }
