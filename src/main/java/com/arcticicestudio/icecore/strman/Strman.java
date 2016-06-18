@@ -111,6 +111,28 @@ public abstract class Strman {
   }
 
   /**
+   * Decodes data encoded with MIME base64.
+   *
+   * @param value the data to decode
+   * @return the decoded data
+   */
+  public static String base64Decode(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return new String(Base64.getDecoder().decode(value));
+  }
+
+  /**
+   * Encodes data with MIME base64.
+   *
+   * @param value the data to encode
+   * @return the encoded String
+   */
+  public static String base64Encode(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Base64.getEncoder().encodeToString(value.getBytes());
+  }
+
+  /**
    * Returns an array with strings between start and end.
    *
    * @param value the input
@@ -348,25 +370,20 @@ public abstract class Strman {
   }
 
   /**
-   * Decodes data encoded with MIME base64.
+   * Ensures that the value ends with the specified suffix.
    *
-   * @param value the data to decode
-   * @return the decoded data
-   */
-  public static String base64Decode(final String value) {
-    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
-    return new String(Base64.getDecoder().decode(value));
-  }
-
-  /**
-   * Encodes data with MIME base64.
+   * <p>
+   *   The suffix will be appended if it doesn't exist.
+   * </p>
    *
-   * @param value the data to encode
-   * @return the encoded String
+   * @param value the value to search
+   * @param suffix the suffix to find
+   * @param caseSensitive the case sensitivity
+   * @return the string with the specified suffix
    */
-  public static String base64Encode(final String value) {
+  public static String ensureRight(final String value, final String suffix, boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
-    return Base64.getEncoder().encodeToString(value.getBytes());
+    return endsWith(value, suffix, caseSensitive) ? value : append(value, suffix);
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
