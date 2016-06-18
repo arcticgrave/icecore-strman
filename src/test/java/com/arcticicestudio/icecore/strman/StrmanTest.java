@@ -182,4 +182,9 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertFalse(containsAny(el, new String[]{"YO", "GURT", "Coconut"}, true)));
   }
+
+  @Test
+  public void countSubstr_shouldCountSubStrCountCaseInsensitiveWithoutOverlapInString() throws Exception {
+    assertThat(countSubstr("aaaAAAaaa", "aaa", false, false), equalTo(3L));
+  }
 }
