@@ -614,4 +614,10 @@ public class StrmanTest {
     assertThat(replace("yo gurt", "yo", "gurt", true), equalTo("gurt gurt"));
     assertThat(replace("yo gurt yo", "yo", "gurt", true), equalTo("gurt gurt gurt"));
   }
+
+  @Test
+  public void replace_shouldReplaceAllOccurrencesOfStringCaseSensitive() throws Exception {
+    assertThat(replace("YO gurt", "yo", "gurt", false), equalTo("gurt gurt"));
+    assertThat(replace("YO gurt yo", "yo", "gurt", false), equalTo("gurt gurt gurt"));
+  }
 }
