@@ -126,6 +126,17 @@ public abstract class Strman {
     return Arrays.stream(parts).map(subPart -> subPart.substring(subPart.indexOf(start) + start.length())).toArray(String[]::new);
   }
 
+  /**
+   * Returns a String array consisting of the characters in the String.
+   *
+   * @param value the input
+   * @return an character array
+   */
+  public static String[] chars(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.split("");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
