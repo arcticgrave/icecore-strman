@@ -9,7 +9,7 @@ email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
 created   2016-06-18 09:54 UTC+0200       +
-modified  2016-06-18 09:57 UTC+0200       +
+modified  2016-06-18 14:31 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
 
 [Description]
@@ -1094,5 +1094,16 @@ public abstract class Strman {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
     }
+  }
+
+  /**
+   * Returns the ArcVer- and SemVer compatible version.
+   *
+   * @return the ArcVer and SemVer compatible version
+   * @see <a href="https://github.com/arcticicestudio/arcver">ArcVer</a>
+   * @see <a href="http://semver.org">SemVer</a>
+   */
+  public static String getVersion() {
+    return "";
   }
 }
