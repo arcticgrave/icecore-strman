@@ -231,11 +231,20 @@ public class StrmanTest {
   }
 
   @Test
-  public void endsWith_caseSensitive_ShouldBeTrueWhenStringEndsWithSearchStr() throws Exception {
+  public void endsWith_caseSensitive_ShouldBeTrueWhenStringEndsWithSearchString() throws Exception {
     String[] fixture = {
       "yo gurt",
       "gurt"
     };
     Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "gurt")));
+  }
+
+  @Test
+  public void endsWith_notCaseSensitive_ShouldBeTrueWhenStringEndsWithSearchString() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "GURT", false)));
   }
 }
