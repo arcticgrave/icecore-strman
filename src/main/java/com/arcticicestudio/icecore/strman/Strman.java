@@ -805,6 +805,22 @@ public abstract class Strman {
     return new StringBuilder(value).reverse().toString();
   }
 
+  /**
+   * Returns a right-padded string of a given length.
+   *
+   * @param value the input value
+   * @param pad the padding value
+   * @param length the length of padding
+   * @return the right-padded string
+   */
+  public static String rightPad(final String value, String pad, final int length) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (value.length() > length) {
+      return value;
+    }
+    return append(value, repeat(pad, length - value.length()));
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
