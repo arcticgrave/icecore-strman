@@ -917,6 +917,16 @@ public abstract class Strman {
   }
 
   /**
+   * Transforms a string into the "snake_case" spelling.
+   *
+   * @param value the value to be transformed
+   * @return the "snake_case"-transformed string
+   */
+  public static String toSnakeCase(final String value) {
+    return toDecamelize(value, "_");
+  }
+
+  /**
    * Transforms a string into the "StudlyCaps" spelling.
    *
    * @param value the value to be transformed
