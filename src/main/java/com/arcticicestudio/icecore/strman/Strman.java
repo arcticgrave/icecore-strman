@@ -821,6 +821,17 @@ public abstract class Strman {
     return append(value, repeat(pad, length - value.length()));
   }
 
+  /**
+   * Removes all spaces on the right of the specified value.
+   *
+   * @param value the value to trim
+   * @return the string without right border spaces
+   */
+  public static String rightTrim(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.replaceAll("\\s+$", "");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
