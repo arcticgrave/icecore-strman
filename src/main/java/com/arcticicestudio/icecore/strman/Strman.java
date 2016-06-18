@@ -65,22 +65,22 @@ public abstract class Strman {
   private Strman() {}
 
   /**
-   * Appends Strings to value.
+   * Appends strings to a string.
    *
-   * @param value the initial String
-   * @param appends an array of strings to append
-   * @return The full String
+   * @param value the initial string
+   * @param appends strings to be appended
+   * @return the initial string with the appended strings
    */
   public static String append(final String value, final String... appends) {
     return appendArray(value, appends);
   }
 
   /**
-   * Appends an array of {@code String} to value.
+   * Appends an array of strings to a string.
    *
-   * @param value the initial String
-   * @param appends an array of strings to append
-   * @return the full String
+   * @param value the initial string
+   * @param appends an array of strings to be appended
+   * @return the initial string with the appended strings
    */
   public static String appendArray(final String value, final String[] appends) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -95,17 +95,17 @@ public abstract class Strman {
   }
 
   /**
-   * Gets the character at index.
+   * Gets the character at the specified index.
    *
    * <p>
-   *   This method will take care of negative indexes.
-   *   The valid value of index is between -(length-1) to (length-1).
+   *   Takes care of negative indexes.
+   *   The valid value of the index is between -(length-1) to (length-1).
    *   For values which don't fall under this range {@code Optional.empty} will be returned
    * </p>
    *
-   * @param value the input value
+   * @param value the initial string
    * @param index the location
-   * @return an {@link Optional} String if found else empty
+   * @return an {@link Optional} string if found, empty otherwise
    */
   public static Optional<String> at(final String value, int index) {
     if (value == null || value.isEmpty()) {
@@ -119,10 +119,10 @@ public abstract class Strman {
   }
 
   /**
-   * Decodes data encoded with MIME base64.
+   * Decodes a MIME base64 encoded string.
    *
-   * @param value the data to decode
-   * @return the decoded data
+   * @param value the string to decode
+   * @return the decoded string
    */
   public static String base64Decode(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -130,10 +130,10 @@ public abstract class Strman {
   }
 
   /**
-   * Encodes data with MIME base64.
+   * Encodes a string with MIME base64.
    *
-   * @param value the data to encode
-   * @return the encoded String
+   * @param value the string to encode
+   * @return the encoded string
    */
   public static String base64Encode(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -141,12 +141,12 @@ public abstract class Strman {
   }
 
   /**
-   * Returns an array with strings between start and end.
+   * Extracts a string between a given start- and end string.
    *
-   * @param value the input
-   * @param start the start
-   * @param end the end
-   * @return an array containing different parts between start and end
+   * @param value the initial string
+   * @param start the start string
+   * @param end the end string
+   * @return an array containing different parts between the start- and end strings
    */
   public static String[] between(final String value, final String start, final String end) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -158,10 +158,10 @@ public abstract class Strman {
   }
 
   /**
-   * Returns a String array consisting of the characters in the String.
+   * Splits a string into characters.
    *
-   * @param value the input
-   * @return an character array
+   * @param value the initial string
+   * @return an array containing all string characters
    */
   public static String[] chars(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -171,8 +171,8 @@ public abstract class Strman {
   /**
    * Replaces consecutive whitespace characters with a single space.
    *
-   * @param value the input String
-   * @return the collapsed String
+   * @param value the initial string
+   * @return the collapsed string
    */
   public static String collapseWhitespace(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -180,13 +180,13 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that the needle is contained in the value.
+   * Verifies that the needle is contained in the string.
    *
    * <p>
    *   The search is case insensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @return {@code true} if found, {@code false} otherwise
    */
@@ -195,9 +195,9 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that the needle is contained in the the value.
+   * Verifies that the needle is contained in the the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @param caseSensitive the case sensitivity
    * @return {@code true} if found, {@code false} otherwise
@@ -211,13 +211,13 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that all needles are contained in the value.
+   * Verifies that all needles are contained in the string.
    *
    * <p>
    *   The search is case insensitive.
    * </p>
    *
-   * @param value the input String to search
+   * @param value the string to search
    * @param needles the needles to find
    * @return {@code true} if all needles are found, {@code false} otherwise
    */
@@ -227,9 +227,9 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that all needles are contained in the value.
+   * Verifies that all needles are contained in the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needles the needles to find
    * @param caseSensitive the case sensitivity
    * @return {@code true} if all needles are found, {@code false} otherwise
@@ -240,13 +240,13 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that one or more of needles are contained in the value.
+   * Verifies that one or more of needles are contained in the string.
    *
    * <p>
    *   This is case insensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needles the needles to find
    * @return {@code true} if any needle is found, {@code false} otherwise
    */
@@ -255,9 +255,9 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies that one or more of needles are contained in the value.
+   * Verifies that one or more of needles are contained in the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needles the needles to find
    * @param caseSensitive the case sensitivity
    * @return {@code true} if any needle is found, {@code false} otherwise
@@ -268,9 +268,9 @@ public abstract class Strman {
   }
 
   /**
-   * Counts the number of times a substring appears in the value.
+   * Counts the number of times a substring appears in the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param subStr the substring to find
    * @return the count of times the substring exists
    */
@@ -279,9 +279,9 @@ public abstract class Strman {
   }
 
   /**
-   * Counts the number of times a substring appears in the value.
+   * Counts the number of times a substring appears in the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param subStr the substring to find
    * @param caseSensitive the case sensitivity
    * @param allowOverlapping the overlapping behavior
@@ -295,7 +295,7 @@ public abstract class Strman {
   /**
    * Decodes a binary unicode (16 digits) string.
    *
-   * @param value the value to decode
+   * @param value the string to decode
    * @return the decoded string
    */
   public static String decodeBin(final String value) {
@@ -305,7 +305,7 @@ public abstract class Strman {
   /**
    * Decodes a decimal unicode (5 digits) string,
    *
-   * @param value the value to decode
+   * @param value the string to decode
    * @return the decoded string
    */
   public static String decodeDec(final String value) {
@@ -315,7 +315,7 @@ public abstract class Strman {
   /**
    * Decodes a hexadecimal unicode (4 digits) string.
    *
-   * @param value the value to decode
+   * @param value the string to decode
    * @return the decoded string
    */
   public static String decodeHex(final String value) {
@@ -325,7 +325,7 @@ public abstract class Strman {
   /**
    * Encodes a string into the binary unicode (16 digits) format.
    *
-   * @param value the value to encode
+   * @param value the string to encode
    * @return the encoded string in binary format
    */
   public static String encodeBin(final String value) {
@@ -335,7 +335,7 @@ public abstract class Strman {
   /**
    * Encodes a string into the decimal unicode (5 digits) format.
    *
-   * @param value the value to encode
+   * @param value the string to encode
    * @return the encoded string in decimal format
    */
   public static String encodeDec(final String value) {
@@ -345,7 +345,7 @@ public abstract class Strman {
   /**
    * Encodes a string into the hexadecimal unicode (4 digits) format.
    *
-   * @param value the value to encode
+   * @param value the string to encode
    * @return the encoded string in hexadecimal format
    */
   public static String encodeHex(final String value) {
@@ -353,13 +353,13 @@ public abstract class Strman {
   }
 
   /**
-   * Tests if the value ends with the specified string.
+   * Tests if the string ends with the specified string.
    *
    * <p>
    *   The search is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param search the string to find
    * @return {@code true} if the search string is found, {@code false} otherwise
    */
@@ -369,9 +369,9 @@ public abstract class Strman {
   }
 
   /**
-   * Tests if the value ends with the specified string.
+   * Tests if the string ends with the specified string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param search the string to find
    * @param caseSensitive the case sensitivity
    * @return {@code true} if the search string is found, {@code false} otherwise
@@ -382,9 +382,9 @@ public abstract class Strman {
   }
 
   /**
-   * Tests if the value ends with the specified string.
+   * Tests if the string ends with the specified string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param search the string to find
    * @param position the position to be searched up to
    * @param caseSensitive the case sensitivity
@@ -400,14 +400,14 @@ public abstract class Strman {
   }
 
   /**
-   * Ensures that the value begins with the specified prefix.
+   * Ensures that the string begins with the specified prefix.
    *
    * <p>
    *   The prefix will be prepended if it doesn't exist.
    *   The search is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param prefix the prefix to find
    * @return the string with the specified prefix
    */
@@ -416,13 +416,13 @@ public abstract class Strman {
   }
 
   /**
-   * Ensures that the value begins with the specified prefix.
+   * Ensures that the string begins with the specified prefix.
    *
    * <p>
    *   The prefix will be prepended if it doesn't exist.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param prefix the prefix to find
    * @param caseSensitive the case sensitivity
    * @return the string with the specified prefix
@@ -438,14 +438,14 @@ public abstract class Strman {
   }
 
   /**
-   * Ensures that the value ends with the specified suffix.
+   * Ensures that the string ends with the specified suffix.
    *
    * <p>
    *   The suffix will be appended if it doesn't exist.
    *   The search is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param suffix the suffix to find
    * @return the string with the specified suffix
    */
@@ -454,13 +454,13 @@ public abstract class Strman {
   }
 
   /**
-   * Ensures that the value ends with the specified suffix.
+   * Ensures that the string ends with the specified suffix.
    *
    * <p>
    *   The suffix will be appended if it doesn't exist.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param suffix the suffix to find
    * @param caseSensitive the case sensitivity
    * @return the string with the specified suffix
@@ -471,9 +471,9 @@ public abstract class Strman {
   }
 
   /**
-   * Returns the first specified number of characters of the value.
+   * Returns the first specified number of characters of the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param numberChars the number of characters to return
    * @return the first specified number of characters
    */
@@ -485,7 +485,7 @@ public abstract class Strman {
   /**
    * Formats a string using the specified parameters.
    *
-   * @param value the value to be formatted
+   * @param value the string to be formatted
    * @param params the parameters to be described in the string
    * @return the formatted string
    */
@@ -505,9 +505,9 @@ public abstract class Strman {
   }
 
   /**
-   * Returns the first character of the value.
+   * Returns the first character of the string.
    *
-   * @param value the input value
+   * @param value the string value
    * @return the first character
    */
   public static String head(final String value) {
@@ -518,10 +518,10 @@ public abstract class Strman {
    * Returns the index of the first occurrence of the specified needle.
    *
    * <p>
-   *   Returns a negative integer if the value is not found.
+   *   Returns a negative integer if the needle is not found.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @param offset the offset to start searching from
    * @param caseSensitive the case sensitivity
@@ -536,9 +536,9 @@ public abstract class Strman {
   }
 
   /**
-   * Inserts the specified substring into the value at the provided index.
+   * Inserts the specified substring into the string at the provided index.
    *
-   * @param value the input value
+   * @param value the initial string
    * @param substr the substring to insert
    * @param index the index to insert the specified substring
    * @return the string with the inserted substring
@@ -553,10 +553,10 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies if the value consists of lower case characters.
+   * Verifies if the string consists of lower case characters.
    *
-   * @param value the value to verify
-   * @return {@code true} if the value consists of lower case characters, {@code false} otherwise
+   * @param value the string to verify
+   * @return {@code true} if the string consists of lower case characters, {@code false} otherwise
    */
   public static boolean isLowerCase(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -564,10 +564,10 @@ public abstract class Strman {
   }
 
   /**
-   * Checks whether the Object is a String.
+   * Checks whether the {@link Object} is of type {@link String}.
    *
-   * @param value the value to check
-   * @return {@code true} if the Object is a String, {@code false} otherwise
+   * @param value the object to check
+   * @return {@code true} if the {@link Object} is of type {@link String}, {@code false} otherwise
    */
   public static boolean isString(final Object value) {
     if (Objects.isNull(value)) {
@@ -577,10 +577,10 @@ public abstract class Strman {
   }
 
   /**
-   * Verifies if the value consists of upper case characters.
+   * Verifies if the string consists of upper case characters.
    *
-   * @param value the value to verify
-   * @return {@code true} if the value consists of upper case characters, {@code false} otherwise
+   * @param value the string to verify
+   * @return {@code true} if the string consists of upper case characters, {@code false} otherwise
    */
   public static boolean isUpperCase(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -588,9 +588,9 @@ public abstract class Strman {
   }
 
   /**
-   * Returns the last specified number of characters of the value.
+   * Returns the last specified number of characters of the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param numberChars the number of characters to return
    * @return the last specified number of characters
    */
@@ -606,11 +606,11 @@ public abstract class Strman {
    * Returns the index of the last occurrence of the specified needle.
    *
    * <p>
-   *   Returns a negative integer if the value is not found.
-   *   The search runs backwards and is case sensitive.
+   *   Returns a negative integer if the needle is not found.
+   *   The search starts at the end of the specified string and is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @return the position of the last occurrence of the needle, negative integer if not found
    */
@@ -623,11 +623,11 @@ public abstract class Strman {
    * Returns the index of the last occurrence of the specified needle.
    *
    * <p>
-   *   Returns a negative integer if the value is not found.
-   *   The search runs backwards.
+   *   Returns a negative integer if the needle is not found.
+   *   The search starts at the end of the specified string.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @param caseSensitive the case sensitivity
    * @return the position of the last occurrence of the needle, negative integer if not found
@@ -641,10 +641,10 @@ public abstract class Strman {
    * Returns the index of the last occurrence of the specified needle searching backwards from the offset.
    *
    * <p>
-   *   Returns a negative integer if the value is not found.
+   *   Returns a negative integer if the needle is not found.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param needle the needle to find
    * @param offset the index to start the search from
    * @param caseSensitive the case sensitivity
@@ -662,7 +662,7 @@ public abstract class Strman {
   /**
    * Returns a left-padded string of a given length.
    *
-   * @param value the input value
+   * @param value the initial string
    * @param pad the padding value
    * @param length the length of padding
    * @return the left-padded string
@@ -677,9 +677,9 @@ public abstract class Strman {
   }
 
   /**
-   * Removes all spaces on left of the specified value.
+   * Removes all spaces on left of the specified string.
    *
-   * @param value the value to trim
+   * @param value the string to trim
    * @return the string without left border spaces
    */
   public static String leftTrim(final String value) {
@@ -688,10 +688,10 @@ public abstract class Strman {
   }
 
   /**
-   * Returns the length of the value.
+   * Returns the length of the string.
    *
-   * @param value the input value
-   * @return the length of the value
+   * @param value the initial string
+   * @return the length of the string
    */
   public static int length(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -699,22 +699,22 @@ public abstract class Strman {
   }
 
   /**
-   * Prepends the specified strings to the value.
+   * Prepends the specified strings to the string.
    *
-   * @param value the input value
+   * @param value the initial string
    * @param prepends the strings to prepend
-   * @return the value with the prepended strings
+   * @return the string with the prepended strings
    */
   public static String prepend(final String value, final String... prepends) {
     return prependArray(value, prepends);
   }
 
   /**
-   * Prepends the specified strings to the value.
+   * Prepends the specified strings to the string.
    *
-   * @param value the input value
+   * @param value the initial string
    * @param prepends the strings to prepend
-   * @return the value with the prepended strings
+   * @return the string with the prepended strings
    */
   public static String prependArray(final String value, final String[] prepends) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -742,27 +742,27 @@ public abstract class Strman {
   }
 
   /**
-   * Removes the specified prefix from the value.
+   * Removes the specified prefix from the string.
    *
    * <p>
    *   The search is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param prefix the prefix to remove
-   * @return the value without the specified prefix
+   * @return the string without the specified prefix
    */
   public static String removeLeft(final String value, final String prefix) {
     return removeLeft(value, prefix, true);
   }
 
   /**
-   * Removes the specified prefix from the value.
+   * Removes the specified prefix from the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param prefix the prefix to remove
    * @param caseSensitive the case sensitivity
-   * @return the value without the specified prefix
+   * @return the string without the specified prefix
    */
   public static String removeLeft(final String value, final String prefix, final boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -777,8 +777,8 @@ public abstract class Strman {
   /**
    * Removes all non-word characters.
    *
-   * @param value the input value
-   * @return the value without non-word characters
+   * @param value the initial string
+   * @return the string without non-word characters
    */
   public static String removeNonWords(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -786,27 +786,27 @@ public abstract class Strman {
   }
 
   /**
-   * Removes the specified suffix from the value.
+   * Removes the specified suffix from the string.
    *
    * <p>
    *   The search is case sensitive.
    * </p>
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param suffix the suffix to remove
-   * @return the value without the specified suffix
+   * @return the string without the specified suffix
    */
   public static String removeRight(final String value, final String suffix) {
     return removeRight(value, suffix, true);
   }
 
   /**
-   * Removes the specified suffix from the value.
+   * Removes the specified suffix from the string.
    *
-   * @param value the value to search
+   * @param value the string to search
    * @param suffix the suffix to remove
    * @param caseSensitive the case sensitivity
-   * @return the value without the specified suffix
+   * @return the string without the specified suffix
    */
   public static String removeRight(final String value, final String suffix, final boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -815,10 +815,10 @@ public abstract class Strman {
   }
 
   /**
-   * Removes all spaces from the value.
+   * Removes all spaces from the string.
    *
-   * @param value the input value
-   * @return the value without spaces
+   * @param value the initial string
+   * @return the string without spaces
    */
   public static String removeSpaces(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -828,7 +828,7 @@ public abstract class Strman {
   /**
    * Repeats a string with the given multiplier.
    *
-   * @param value the value to repeat
+   * @param value the string to repeat
    * @param multiplier the number of repeats
    * @return the repeated string
    */
@@ -838,13 +838,13 @@ public abstract class Strman {
   }
 
   /**
-   * Replaces all occurrences of the specified search value with the given value.
+   * Replaces all occurrences of the specified search string with the given string.
    *
-   * @param value the input value
-   * @param search the value to search
-   * @param replaceValue the value to replace with the searched value
+   * @param value the initial string
+   * @param search the string to search
+   * @param replaceValue the string to replace with the searched string
    * @param caseSensitive the case sensitivity
-   * @return the value with the replaced values
+   * @return the string with the replaced strings
    */
   public static String replace(final String value, final String search, final String replaceValue, final boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -856,10 +856,10 @@ public abstract class Strman {
   }
 
   /**
-   * Reverses the value.
+   * Reverses the string.
    *
-   * @param value the input value
-   * @return the reversed value
+   * @param value the initial string
+   * @return the reversed string
    */
   public static String reverse(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -869,9 +869,9 @@ public abstract class Strman {
   /**
    * Returns a right-padded string of a given length.
    *
-   * @param value the input value
-   * @param pad the padding value
-   * @param length the length of padding
+   * @param value the initial string
+   * @param pad the padding string
+   * @param length the length of the padding
    * @return the right-padded string
    */
   public static String rightPad(final String value, String pad, final int length) {
@@ -883,9 +883,9 @@ public abstract class Strman {
   }
 
   /**
-   * Removes all spaces on the right of the specified value.
+   * Removes all spaces on the right of a string.
    *
-   * @param value the value to trim
+   * @param value the string to trim
    * @return the string without right border spaces
    */
   public static String rightTrim(final String value) {
@@ -894,9 +894,9 @@ public abstract class Strman {
   }
 
   /**
-   * Randomly orders the characters of the given string.
+   * Randomly orders the characters of a string.
    *
-   * @param value the input string
+   * @param value the initial string
    * @return the shuffled string
    */
   public static String shuffle(final String value) {
@@ -913,16 +913,16 @@ public abstract class Strman {
   }
 
   /**
-   * Surrounds a string with the given prefix and suffix.
+   * Surrounds a string with the a prefix and suffix.
    *
    * <p>
    *   If the suffix is empty or {@code null} the prefix will be used.
    * </p>
    *
-   * @param value the input value
-   * @param prefix the prefix
-   * @param suffix the suffix
-   * @return the string surrounded with the prefix and suffix
+   * @param value the initial string
+   * @param prefix the prefix string
+   * @param suffix the suffix string
+   * @return the string surrounded with the prefix- and suffix strings
    */
   public static String surround(final String value, final String prefix, final String suffix) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
@@ -933,7 +933,7 @@ public abstract class Strman {
   /**
    * Returns the tail of a string.
    *
-   * @param value the input string
+   * @param value the initial string
    * @return the tail of the given string
    */
   public static String tail(final String value) {
@@ -944,7 +944,7 @@ public abstract class Strman {
   /**
    * Transforms a string into the "camelCase" spelling.
    *
-   * @param value the value to be transformed
+   * @param value the string to be transformed
    * @return the "camelCase"-transformed string
    */
   public static String toCamelCase(final String value) {
@@ -956,7 +956,7 @@ public abstract class Strman {
   /**
    * Transforms a string into the decamelized form.
    *
-   * @param value the value to be transformed
+   * @param value the string to be transformed
    * @param chr the string to replace with
    * @return the decamelized string
    */
@@ -969,7 +969,7 @@ public abstract class Strman {
   /**
    * Transforms a string into the "kebab-case" spelling.
    *
-   * @param value the value to be transformed
+   * @param value the string to be transformed
    * @return the "kebab-case"-transformed string
    */
   public static String toKebabCase(final String value) {
@@ -979,7 +979,7 @@ public abstract class Strman {
   /**
    * Transforms a string into the "snake_case" spelling.
    *
-   * @param value the value to be transformed
+   * @param value the string to be transformed
    * @return the "snake_case"-transformed string
    */
   public static String toSnakeCase(final String value) {
@@ -989,7 +989,7 @@ public abstract class Strman {
   /**
    * Transforms a string into the "StudlyCaps" spelling.
    *
-   * @param value the value to be transformed
+   * @param value the string to be transformed
    * @return the "StudlyCaps"-transformed string
    */
   public static String toStudlyCase(final String value) {
@@ -999,11 +999,11 @@ public abstract class Strman {
   }
 
   /**
-   * Unsecured truncation of the given string , cutting the independent string of the required position.
+   * Unsecured truncation of a string, cutting the independent string of the required position.
    *
-   * @param value the input string
+   * @param value the initial string
    * @param length the size of the truncated string
-   * @param filler the value that will be added to the end
+   * @param filler the string that will be added to the end
    * @return the unsecured truncated string
    */
   public static String truncate(final String value, final int length, final String filler) {
@@ -1024,9 +1024,9 @@ public abstract class Strman {
    *   Always returns the last full word.
    * </p>
    *
-   * @param value the input string
+   * @param value the initial string
    * @param length the maximal size of the truncated string
-   * @param filler the value that will be added to the end
+   * @param filler the string that will be added to the end
    * @return the securely truncated string
    */
   public static String truncateSafe(final String value, final int length, final String filler) {
@@ -1056,7 +1056,7 @@ public abstract class Strman {
    * Splits a string to words.
    *
    * @param value the string to split
-   * @return the array of words
+   * @return an string array containing all words
    */
   public static String[] words(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
