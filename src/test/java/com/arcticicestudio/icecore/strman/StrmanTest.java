@@ -33,8 +33,10 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static com.arcticicestudio.icecore.strman.Strman.*;
+import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -334,5 +336,14 @@ public class StrmanTest {
     assertThat(encodeDec("A"), equalTo("00065"));
     assertThat(encodeDec("Á"), equalTo("00193"));
     assertThat(encodeDec("AA"), equalTo("0006500065"));
+  }
+
+  @Test
+  public void ensureRight_shouldEnsureStringEndsWithString() throws Exception {
+    final String[] fixture = {
+      "yo", "yogurt", "yoGURT"
+    };
+    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
+    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
   }
 }
