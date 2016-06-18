@@ -363,4 +363,13 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el -> assertThat(head(el), equalTo("y")));
   }
+
+  @Test
+  public void format_shouldFormatStringsToString() throws Exception {
+    assertThat(format("{0} gurt", "yo"), equalTo("yo gurt"));
+    assertThat(format("yo {0}", "gurt"), equalTo("yo gurt"));
+    assertThat(format("yo {0}", "gurt", "yo"), equalTo("yo gurt"));
+    assertThat(format("{0} {1}", "yo", "gurt"), equalTo("yo gurt"));
+    assertThat(format("{1} {0}", "gurt", "yo"), equalTo("yo gurt"));
+  }
 }
