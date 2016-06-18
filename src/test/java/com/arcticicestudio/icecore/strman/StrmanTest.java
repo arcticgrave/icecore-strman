@@ -346,4 +346,12 @@ public class StrmanTest {
     assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
     assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
   }
+
+  @Test
+  public void first_shouldReturnFirstTwoCharsOfString() throws Exception {
+    final String[] fixture = {
+      "yo", "yogurt"
+    };
+    Arrays.stream(fixture).forEach(el -> assertThat(first(el, 2), equalTo("yo")));
+  }
 }
