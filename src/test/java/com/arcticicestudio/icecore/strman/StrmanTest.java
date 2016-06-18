@@ -517,4 +517,12 @@ public class StrmanTest {
     assertThat(prepend("", "yogurt"), equalTo("yogurt"));
     assertThat(prepend("gurt", "yo"), equalTo("yogurt"));
   }
+
+  @Test
+  public void prependArray_shouldPrependStrings() throws Exception {
+    assertThat(prependArray("t", new String[]{"y", "o", "g", "u", "r"}), equalTo("yogurt"));
+    assertThat(prependArray("yogurt", new String[0]), equalTo("yogurt"));
+    assertThat(prependArray("", new String[]{"yogurt"}), equalTo("yogurt"));
+    assertThat(prependArray("gurt", new String[]{"yo"}), equalTo("yogurt"));
+  }
 }
