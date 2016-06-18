@@ -27,6 +27,7 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.StringJoiner;
 import java.util.function.Predicate;
@@ -106,6 +107,23 @@ public abstract class Strman {
       index = length + index;
     }
     return (index < length && index >= 0) ? Optional.of(String.valueOf(value.charAt(index))) : Optional.empty();
+  }
+
+  /**
+   * Returns an array with strings between start and end.
+   *
+   * @param value the input
+   * @param start the start
+   * @param end the end
+   * @return an array containing different parts between start and end
+   */
+  public static String[] between(final String value, final String start, final String end) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(start, NULL_STRING_PREDICATE, () -> "'start' should be not null.");
+    validate(end, NULL_STRING_PREDICATE, () -> "'end' should be not null.");
+
+    String[] parts = value.split(end);
+    return Arrays.stream(parts).map(subPart -> subPart.substring(subPart.indexOf(start) + start.length())).toArray(String[]::new);
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
