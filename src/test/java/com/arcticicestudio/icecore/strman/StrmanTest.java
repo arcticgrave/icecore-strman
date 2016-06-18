@@ -415,4 +415,13 @@ public class StrmanTest {
     assertThat(indexOf(value, "T", 0, false), equalTo(5));
     assertThat(indexOf(value, "F", 0, false), equalTo(-1));
   }
+
+  @Test
+  public void insert_shouldInsertStringAtIndex() throws Exception {
+    assertThat(insert("yurt", "og", 1), equalTo("yogurt"));
+    assertThat(insert("yo", "gurt", 2), equalTo("yogurt"));
+    assertThat(insert("yogurt", "x", 5), equalTo("yogurxt"));
+    assertThat(insert("yogurt", "x", 6), equalTo("yogurtx"));
+    assertThat(insert("yo gurt", "asadasd", 100), equalTo("yo gurt"));
+  }
 }
