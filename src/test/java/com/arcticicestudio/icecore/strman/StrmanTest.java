@@ -661,4 +661,17 @@ public class StrmanTest {
     assertThat(truncateSafe("A lightweight module library.", 15, "..."), equalTo("A..."));
     assertThat(truncateSafe("A lightweight module library.", 12, "..."), equalTo("A..."));
   }
+
+  @Test
+  public void truncate_shouldTruncateString() throws Exception {
+    assertThat(truncate("yo gurt", 0, "."), equalTo(""));
+    assertThat(truncate("yo gurt", 3, "."), equalTo("yo."));
+    assertThat(truncate("yo gurt", 2, "."), equalTo("y."));
+    assertThat(truncate("yo gurt", 3, "."), equalTo("yo."));
+    assertThat(truncate("yo gurt", 7, "."), equalTo("yo gurt"));
+    assertThat(truncate("yo gurt", 8, "."), equalTo("yo gurt"));
+    assertThat(truncate("A lightweight module library.", 17, "..."), equalTo("A lightweight ..."));
+    assertThat(truncate("A lightweight module library.", 16, "..."), equalTo("A lightweight..."));
+    assertThat(truncate("A lightweight module library.", 15, "..."), equalTo("A lightweigh..."));
+  }
 }
