@@ -393,4 +393,15 @@ public class StrmanTest {
     assertThat(encodeHex("Á"), equalTo("00c1"));
     assertThat(encodeHex("AA"), equalTo("00410041"));
   }
+
+  @Test
+  public void indexOf_shouldBeTrueWhenNeedleExists() throws Exception {
+    final String value = "yogurt";
+    assertThat(indexOf(value, "y", 0, true), equalTo(0));
+    assertThat(indexOf(value, "o", 0, true), equalTo(1));
+    assertThat(indexOf(value, "u", 0, true), equalTo(3));
+    assertThat(indexOf(value, "r", 0, true), equalTo(4));
+    assertThat(indexOf(value, "t", 0, true), equalTo(5));
+    assertThat(indexOf(value, "f", 0, true), equalTo(-1));
+  }
 }
