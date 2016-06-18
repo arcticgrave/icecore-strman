@@ -27,12 +27,19 @@ Arctic Versioning Specification (ArcVer)
 */
 package com.arcticicestudio.icecore.strman;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.StringJoiner;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * Manipulates- and modifies strings.
@@ -738,6 +745,18 @@ public abstract class Strman {
   public static String removeSpaces(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return value.replaceAll("\\s", "");
+  }
+
+  /**
+   * Repeats a string with the given multiplier.
+   *
+   * @param value the value to repeat
+   * @param multiplier the number of repeats
+   * @return the repeated string
+   */
+  public static String repeat(final String value, final int multiplier) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Stream.generate(() -> value).limit(multiplier).collect(joining());
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
