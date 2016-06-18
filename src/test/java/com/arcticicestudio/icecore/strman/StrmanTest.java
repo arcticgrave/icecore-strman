@@ -578,4 +578,14 @@ public class StrmanTest {
     assertThat(removeRight("gurtyo", "gurt"), equalTo("gurtyo"));
     assertThat(removeRight("gurtgurt", "gurt"), equalTo("gurt"));
   }
+
+  @Test
+  public void removeRight_shouldRemoveStringFromRightCaseInSensitive() throws Exception {
+    final String[] fixture = {
+      "yogurt",
+      "yo"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(removeRight(el, "GURT", false), equalTo("yo")));
+  }
 }
