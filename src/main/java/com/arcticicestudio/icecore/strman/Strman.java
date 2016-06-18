@@ -237,7 +237,7 @@ public abstract class Strman {
   }
 
   /**
-   * Count the number of times a substring appears in the value.
+   * Counts the number of times a substring appears in the value.
    *
    * @param value the value to search
    * @param subStr the substring to find
@@ -248,7 +248,7 @@ public abstract class Strman {
   }
 
   /**
-   * Count the number of times a substring appears in the value.
+   * Counts the number of times a substring appears in the value.
    *
    * @param value the value to search
    * @param subStr the substring to find
@@ -259,6 +259,24 @@ public abstract class Strman {
   public static long countSubstr(final String value, final String subStr, final boolean caseSensitive, boolean allowOverlapping) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return countSubstr(caseSensitive ? value : value.toLowerCase(), caseSensitive ? subStr : subStr.toLowerCase(), allowOverlapping, 0L);
+  }
+
+  /**
+   * Tests if the value ends with the specified string.
+   *
+   * @param value the value to search
+   * @param search the string to find
+   * @param position the position to be searched up to
+   * @param caseSensitive the case sensitivity
+   * @return @return {@code true} if the search string is found, {@code false} otherwise
+   */
+  public static boolean endsWith(final String value, final String search, final int position, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    int remainingLength = position - search.length();
+    if (caseSensitive) {
+      return value.indexOf(search, remainingLength) > -1;
+    }
+    return value.toLowerCase().indexOf(search.toLowerCase(), remainingLength) > -1;
   }
 
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
