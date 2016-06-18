@@ -794,6 +794,17 @@ public abstract class Strman {
     return value.toLowerCase().replace(search.toLowerCase(), replaceValue);
   }
 
+  /**
+   * Reverses the value.
+   *
+   * @param value the input value
+   * @return the reversed value
+   */
+  public static String reverse(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return new StringBuilder(value).reverse().toString();
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
