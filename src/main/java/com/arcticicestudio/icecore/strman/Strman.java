@@ -148,6 +148,22 @@ public abstract class Strman {
     return value.trim().replaceAll("\\s\\s+", " ");
   }
 
+  /**
+   * Verifies that the needle is contained in the value.
+   *
+   * @param value the value to search
+   * @param needle the needle to find
+   * @param caseSensitive the case sensitivity
+   * @return {@code true} if found, {@code false} otherwise
+   */
+  public static boolean contains(final String value, final String needle, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (caseSensitive) {
+      return value.contains(needle);
+    }
+    return value.toLowerCase().contains(needle.toLowerCase());
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
