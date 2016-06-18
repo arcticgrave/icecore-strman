@@ -265,4 +265,14 @@ public class StrmanTest {
     };
     Arrays.stream(fixture).forEach(el -> assertTrue(endsWith(el, "GURT", el.length() - 1, false)));
   }
+
+  @Test
+  public void ensureLeft_shouldEnsureValueStartsWithFoo() throws Exception {
+    String[] fixture = {
+      "yogurt",
+      "gurt"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertThat(ensureLeft(el, "yo"), equalTo("yogurt")));
+  }
 }
