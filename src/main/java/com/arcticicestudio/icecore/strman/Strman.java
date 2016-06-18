@@ -195,6 +195,19 @@ public abstract class Strman {
     return Arrays.stream(needles).allMatch(needle -> contains(value, needle, true));
   }
 
+  /**
+   * Verifies that all needles are contained in value.
+   *
+   * @param value the input String to search
+   * @param needles the needles to find
+   * @param caseSensitive the case sensitivity
+   * @return {@code true} if all needles are found, {@code false} otherwise
+    */
+  public static boolean containsAll(final String value, final String[] needles, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return Arrays.stream(needles).allMatch(needle -> contains(value, needle, caseSensitive));
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
