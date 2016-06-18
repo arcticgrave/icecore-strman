@@ -832,6 +832,17 @@ public abstract class Strman {
     return value.replaceAll("\\s+$", "");
   }
 
+  /**
+   * Splits a string to words.
+   *
+   * @param value the string to split
+   * @return the array of words
+   */
+  public static String[] words(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.split("\\W+");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
