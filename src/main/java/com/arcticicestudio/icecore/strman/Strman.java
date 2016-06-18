@@ -505,6 +505,21 @@ public abstract class Strman {
     return Objects.equals(value, value.toUpperCase());
   }
 
+  /**
+   * Returns the last specified number of characters of the value.
+   *
+   * @param value the value to search
+   * @param numberChars the number of characters to return
+   * @return the last specified number of characters
+   */
+  public static String last(final String value, int numberChars) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (numberChars > value.length()) {
+      return value;
+    }
+    return value.substring(value.length() - numberChars);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
