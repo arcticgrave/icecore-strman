@@ -1,6 +1,6 @@
 /*
 +++++++++++++++++++++++++++++++++++++++++++
-title     String Manipulation             +
+title     String Manipulation Publi API   +
 project   icecore-strman                  +
 file      Strman.java                     +
 version                                   +
