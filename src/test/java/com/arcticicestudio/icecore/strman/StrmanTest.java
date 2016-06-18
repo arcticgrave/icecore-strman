@@ -35,6 +35,7 @@ import java.util.Optional;
 import static com.arcticicestudio.icecore.strman.Strman.*;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 import static org.hamcrest.collection.IsArrayWithSize.emptyArray;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -673,5 +674,13 @@ public class StrmanTest {
     assertThat(truncate("A lightweight module library.", 17, "..."), equalTo("A lightweight ..."));
     assertThat(truncate("A lightweight module library.", 16, "..."), equalTo("A lightweight..."));
     assertThat(truncate("A lightweight module library.", 15, "..."), equalTo("A lightweigh..."));
+  }
+
+  @Test
+  public void shuffle_shouldShuffleAString() throws Exception {
+    assertThat(shuffle("yogurt"), not(equalTo("yogurt")));
+    assertThat(shuffle("coconut"), not(equalTo("coconut")));
+    assertThat(shuffle(""), equalTo(""));
+    assertThat(shuffle("s"), equalTo("s"));
   }
 }
