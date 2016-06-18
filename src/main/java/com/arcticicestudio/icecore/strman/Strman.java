@@ -303,6 +303,16 @@ public abstract class Strman {
   }
 
   /**
+   * Decodes a decimal unicode (5 digits) string,
+   *
+   * @param value the value to decode
+   * @return the decoded string
+   */
+  public static String decodeDec(final String value) {
+    return decode(value, 5, 10);
+  }
+
+  /**
    * Tests if the value ends with the specified string.
    *
    * <p>
