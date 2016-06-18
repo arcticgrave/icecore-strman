@@ -1,0 +1,2 @@
+IceCore - String Manipulation
+=============================
