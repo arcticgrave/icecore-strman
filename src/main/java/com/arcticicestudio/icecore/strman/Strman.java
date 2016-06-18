@@ -44,6 +44,11 @@ import java.util.function.Supplier;
  */
 public abstract class Strman {
 
+  /*
+   * Avoid class instantiation.
+   */
+  private Strman() {}
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
