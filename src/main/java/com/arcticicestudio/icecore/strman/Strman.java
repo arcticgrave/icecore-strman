@@ -308,6 +308,28 @@ public abstract class Strman {
     return value.toLowerCase().indexOf(search.toLowerCase(), remainingLength) > -1;
   }
 
+  /**
+   * Ensures that the value begins with the specified prefix.
+   *
+   * <p>
+   *   The prefix will be prepended if it doesn't exist.
+   * </p>
+   *
+   * @param value the value to search
+   * @param prefix the prefix to find
+   * @param caseSensitive the case sensitivity
+   * @return the string with the specified prefix
+   */
+  public static String ensureLeft(final String value, final String prefix, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (caseSensitive) {
+      return value.startsWith(prefix) ? value : prefix + value;
+    }
+    String lowCaseValue = value.toLowerCase();
+    String lowCasePrefix = prefix.toLowerCase();
+    return lowCaseValue.startsWith(lowCasePrefix) ? value : prefix + value;
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
