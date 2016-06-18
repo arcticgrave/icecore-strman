@@ -372,4 +372,9 @@ public class StrmanTest {
     assertThat(format("{0} {1}", "yo", "gurt"), equalTo("yo gurt"));
     assertThat(format("{1} {0}", "gurt", "yo"), equalTo("yo gurt"));
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void format_shouldThrowExceptionWhenStringDoesNotExist() throws Exception {
+    assertThat(format("{1} {0}"), equalTo("{1} {0}"));
+  }
 }
