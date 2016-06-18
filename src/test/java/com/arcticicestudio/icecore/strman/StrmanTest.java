@@ -630,4 +630,14 @@ public class StrmanTest {
     assertThat(reverse("yo_"), equalTo("_oy"));
     assertThat(reverse("y"), equalTo("y"));
   }
+
+  @Test
+  public void rightPad_shouldRightPadAString() throws Exception {
+    assertThat(rightPad("1", "0", 5), equalTo("10000"));
+    assertThat(rightPad("10", "0", 5), equalTo("10000"));
+    assertThat(rightPad("100", "0", 5), equalTo("10000"));
+    assertThat(rightPad("1000", "0", 5), equalTo("10000"));
+    assertThat(rightPad("10000", "0", 5), equalTo("10000"));
+    assertThat(rightPad("10000000", "0", 5), equalTo("10000000"));
+  }
 }
