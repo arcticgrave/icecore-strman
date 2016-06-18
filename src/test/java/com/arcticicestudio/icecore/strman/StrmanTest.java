@@ -36,6 +36,7 @@ import static com.arcticicestudio.icecore.strman.Strman.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Tests the <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
@@ -114,5 +115,17 @@ public class StrmanTest {
   public void collapseWhitespace_shouldReplaceConsecutiveWhitespaceBetweenMultipleStrings() throws Exception {
     String input = " yo      gurt      coco     nut    ";
     assertThat(collapseWhitespace(input), equalTo("yo gurt coco nut"));
+  }
+
+  @Test
+  public void containsWithCaseSensitiveFalse_shouldReturnTrueWhenStringContainsNeedle() throws Exception {
+    String[] fixture = {
+      "yo gurt",
+      "gurt yo",
+      "yogurt",
+      "yo"
+    };
+
+    Arrays.stream(fixture).forEach(el -> assertTrue(contains(el, "YO")));
   }
 }
