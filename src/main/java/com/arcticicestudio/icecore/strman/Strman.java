@@ -599,6 +599,23 @@ public abstract class Strman {
   }
 
   /**
+   * Returns a left-padded string of a given length.
+   *
+   * @param value the input value
+   * @param pad the padding value
+   * @param length the length of padding
+   * @return the left-padded string
+   */
+  public static String leftPad(final String value, final String pad, final int length) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(pad, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (value.length() > length) {
+      return value;
+    }
+    return append(repeat(pad, length - value.length()), value);
+  }
+
+  /**
    * Removes all spaces on left of the specified value.
    *
    * @param value the value to trim
