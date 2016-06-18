@@ -107,6 +107,12 @@ public class StrmanTest {
       " yo     gurt   ",
       "    yo     gurt "
     };
-    Arrays.stream(fixture).forEach(el -> assertThat(collapseWhitespace(el), equalTo("foo bar")));
+    Arrays.stream(fixture).forEach(el -> assertThat(collapseWhitespace(el), equalTo("yo gurt")));
+  }
+
+  @Test
+  public void collapseWhitespace_shouldReplaceConsecutiveWhitespaceBetweenMultipleStrings() throws Exception {
+    String input = " yo      gurt      coco     nut    ";
+    assertThat(collapseWhitespace(input), equalTo("yo gurt coco nut"));
   }
 }
