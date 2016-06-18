@@ -871,6 +871,17 @@ public abstract class Strman {
   }
 
   /**
+   * Returns the tail of a string.
+   *
+   * @param value the input string
+   * @return the tail of the given string
+   */
+  public static String tail(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return last(value, value.length() - 1);
+  }
+
+  /**
    * Transforms a string into the "camelCase" spelling.
    *
    * @param value the value to be transformed
