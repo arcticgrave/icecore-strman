@@ -323,6 +323,16 @@ public abstract class Strman {
   }
 
   /**
+   * Encodes a string to a binary unicode (16 digits) string.
+   *
+   * @param value the value to encode
+   * @return the encoded string in binary format
+   */
+  public static String encodeBin(final String value) {
+    return encode(value, 16, 2);
+  }
+
+  /**
    * Tests if the value ends with the specified string.
    *
    * <p>
