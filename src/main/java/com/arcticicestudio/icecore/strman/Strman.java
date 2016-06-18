@@ -374,6 +374,22 @@ public abstract class Strman {
    *
    * <p>
    *   The suffix will be appended if it doesn't exist.
+   *   The search is case sensitive.
+   * </p>
+   *
+   * @param value the value to search
+   * @param suffix the suffix to find
+   * @return the string with the specified suffix
+   */
+  public static String ensureRight(final String value, final String suffix) {
+    return ensureRight(value, suffix, true);
+  }
+
+  /**
+   * Ensures that the value ends with the specified suffix.
+   *
+   * <p>
+   *   The suffix will be appended if it doesn't exist.
    * </p>
    *
    * @param value the value to search
