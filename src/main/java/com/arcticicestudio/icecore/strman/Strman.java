@@ -137,6 +137,17 @@ public abstract class Strman {
     return value.split("");
   }
 
+  /**
+   * Replaces consecutive whitespace characters with a single space.
+   *
+   * @param value the input String
+   * @return the collapsed String
+   */
+  public static String collapseWhitespace(final String value) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    return value.trim().replaceAll("\\s\\s+", " ");
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
