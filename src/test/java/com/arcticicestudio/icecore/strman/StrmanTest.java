@@ -305,4 +305,10 @@ public class StrmanTest {
     assertThat(decodeBin("0000000001000001"), equalTo("A"));
     assertThat(decodeBin("00000000010000010000000001000001"), equalTo("AA"));
   }
+
+  @Test
+  public void binEncode_shouldEncodeAStringToBinaryFormat() throws Exception {
+    assertThat(encodeBin("A"), equalTo("0000000001000001"));
+    assertThat(encodeBin("AA"), equalTo("00000000010000010000000001000001"));
+  }
 }
