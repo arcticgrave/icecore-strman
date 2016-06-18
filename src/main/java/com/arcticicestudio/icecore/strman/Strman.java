@@ -776,6 +776,24 @@ public abstract class Strman {
     return Stream.generate(() -> value).limit(multiplier).collect(joining());
   }
 
+  /**
+   * Replaces all occurrences of the specified search value with the given value.
+   *
+   * @param value the input value
+   * @param search the value to search
+   * @param replaceValue the value to replace with the searched value
+   * @param caseSensitive the case sensitivity
+   * @return the value with the replaced values
+   */
+  public static String replace(final String value, final String search, final String replaceValue, final boolean caseSensitive) {
+    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    validate(search, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
+    if (caseSensitive) {
+      return value.replace(search, replaceValue);
+    }
+    return value.toLowerCase().replace(search.toLowerCase(), replaceValue);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
