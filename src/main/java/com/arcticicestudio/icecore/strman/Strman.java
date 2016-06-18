@@ -642,6 +642,19 @@ public abstract class Strman {
     return joiner.toString() + value;
   }
 
+  /**
+   * Removes empty strings from the string array.
+   *
+   * @param strings the string array to be cleaned
+   * @return the string array without empty strings
+   */
+  public static String[] removeEmptyStrings(String[] strings) {
+    if (Objects.isNull(strings)) {
+      throw new IllegalArgumentException("Input array should not be null");
+    }
+    return Arrays.stream(strings).filter(str -> str != null && !str.trim().isEmpty()).toArray(String[]::new);
+  }
+
   private static void validate(String value, Predicate<String> predicate, final Supplier<String> supplier) {
     if (predicate.test(value)) {
       throw new IllegalArgumentException(supplier.get());
