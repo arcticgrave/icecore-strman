@@ -404,4 +404,15 @@ public class StrmanTest {
     assertThat(indexOf(value, "t", 0, true), equalTo(5));
     assertThat(indexOf(value, "f", 0, true), equalTo(-1));
   }
+
+  @Test
+  public void indexOf_shouldBeTrueWhenNeedleExistCaseSensitive() throws Exception {
+    final String value = "yogurt";
+    assertThat(indexOf(value, "Y", 0, false), equalTo(0));
+    assertThat(indexOf(value, "O", 0, false), equalTo(1));
+    assertThat(indexOf(value, "U", 0, false), equalTo(3));
+    assertThat(indexOf(value, "R", 0, false), equalTo(4));
+    assertThat(indexOf(value, "T", 0, false), equalTo(5));
+    assertThat(indexOf(value, "F", 0, false), equalTo(-1));
+  }
 }
