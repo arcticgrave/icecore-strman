@@ -3,7 +3,7 @@
 title     String Manipulation Public API  +
 project   icecore-strman                  +
 file      Strman.java                     +
-version   0.1.0                           +
+version   0.1.1                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -1103,6 +1103,6 @@ public abstract class Strman {
    * @see <a href="http://semver.org">SemVer</a>
    */
   public static String getVersion() {
-    return "0.1.0";
+    return "0.1.1";
   }
 }

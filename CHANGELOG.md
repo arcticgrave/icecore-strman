@@ -1,6 +1,16 @@
 IceCore - String Manipulation
 =============================
 
+## 0.1.1 (2016-06-28)
+### Bug Fixes
+#### API
+  - Fixed two methods returning an invalid case sensitivity output due to lower case convertation:
+
+| Class | Method |
+| ----- | ------ |
+| `com.arcticicestudio.icecore.strman.Strman` | `+ removeLeft(String, String, boolean) : String` |
+| `com.arcticicestudio.icecore.strman.Strman` | `+ replace(String, String, String, boolean) : String` |
+
 ## 0.1.0 (2016-06-18) - Public API
 ### Features
 #### API
