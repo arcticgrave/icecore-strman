@@ -3,7 +3,7 @@
 title     Package Info                    +
 project   icecore-strman                  +
 file      package-info.java               +
-version   0.1.0                           +
+version   0.1.1                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -34,6 +34,6 @@ Arctic Versioning Specification (ArcVer)
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @version 0.1.0
+ * @version 0.1.1
  */
 package com.arcticicestudio.icecore.strman;

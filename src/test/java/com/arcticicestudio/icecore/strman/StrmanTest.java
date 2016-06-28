@@ -3,7 +3,7 @@
 title     String Manipulation Public API Test +
 project   icecore-strman                      +
 file      StrmanTest.java                     +
-version   0.1.0                               +
+version   0.1.1                               +
 author    Arctic Ice Studio                   +
 email     development@arcticicestudio.com     +
 website   http://arcticicestudio.com          +
@@ -36,6 +36,7 @@ import static com.arcticicestudio.icecore.strman.Strman.*;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 import static org.hamcrest.collection.IsArrayWithSize.emptyArray;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -546,6 +547,16 @@ public class StrmanTest {
     assertThat(removeLeft("yoyo", "yo"), equalTo("yo"));
   }
 
+  /**
+   * @throws Exception
+   * @since 0.1.1
+   */
+  @Test
+  public void removeLeft_shouldNotLowercaseWhenCaseInsensitive() throws Exception {
+    String result = removeLeft("This HAS A THIS IN FRONT", "THIS ", false);
+    assertThat(result, is("HAS A THIS IN FRONT"));
+  }
+
   @Test
   public void removeLeft_shouldRemoveStringFromLeftCaseInSensitive() throws Exception {
     final String[] fixture = {
@@ -590,6 +601,16 @@ public class StrmanTest {
     Arrays.stream(fixture).forEach(el -> assertThat(removeRight(el, "GURT", false), equalTo("yo")));
   }
 
+  /**
+   * @throws Exception
+   * @since 0.1.1
+   */
+  @Test
+  public void removeRight_shouldNotLowercaseWhenCaseInsensitive() throws Exception {
+    String result = removeRight("Remove the END at the end", " END", false);
+    assertThat(result, is("Remove the END at the"));
+  }
+
   @Test
   public void removeSpaces_shouldRemoveSpacesInTheString() throws Exception {
     final String[] fixture = {
@@ -620,6 +641,16 @@ public class StrmanTest {
   public void replace_shouldReplaceAllOccurrencesOfStringCaseSensitive() throws Exception {
     assertThat(replace("YO gurt", "yo", "gurt", false), equalTo("gurt gurt"));
     assertThat(replace("YO gurt yo", "yo", "gurt", false), equalTo("gurt gurt gurt"));
+  }
+
+  /**
+   * @throws Exception
+   * @since 0.1.1
+   */
+  @Test
+  public void replace_shouldNotLowercaseWhenCaseInsensitive() throws Exception {
+    String result = replace("One and two and THREE and Four", "and", "&", false);
+    assertThat(result, is("One & two & THREE & Four"));
   }
 
   @Test

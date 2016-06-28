@@ -3,7 +3,7 @@
 title     String Manipulation Public API  +
 project   icecore-strman                  +
 file      Strman.java                     +
-version   0.1.0                           +
+version   0.1.1                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -767,11 +767,10 @@ public abstract class Strman {
   public static String removeLeft(final String value, final String prefix, final boolean caseSensitive) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     validate(prefix, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
-    BiFunction<String, String, String> fx = (f, s) -> f.startsWith(s) ? f.replaceFirst(s, "") : f;
     if (caseSensitive) {
-      return fx.apply(value, prefix);
+      return value.startsWith(prefix) ? value.substring(prefix.length()) : value;
     }
-    return fx.apply(value.toLowerCase(), prefix.toLowerCase());
+    return value.toLowerCase().startsWith(prefix.toLowerCase()) ? value.substring(prefix.length()) : value;
   }
 
   /**
@@ -852,7 +851,7 @@ public abstract class Strman {
     if (caseSensitive) {
       return value.replace(search, replaceValue);
     }
-    return value.toLowerCase().replace(search.toLowerCase(), replaceValue);
+    return Pattern.compile(search, Pattern.CASE_INSENSITIVE).matcher(value).replaceAll(Matcher.quoteReplacement(replaceValue));
   }
 
   /**
@@ -963,7 +962,7 @@ public abstract class Strman {
   public static String toDecamelize(final String value, final String chr) {
     String camelCasedString = toCamelCase(value);
     String[] words = camelCasedString.split("(?=\\p{Upper})");
-    return Arrays.stream(words).map(w -> w.toLowerCase()).collect(joining(Optional.ofNullable(chr).orElse(" ")));
+    return Arrays.stream(words).map(String::toLowerCase).collect(joining(Optional.ofNullable(chr).orElse(" ")));
   }
 
   /**
@@ -1104,6 +1103,6 @@ public abstract class Strman {
    * @see <a href="http://semver.org">SemVer</a>
    */
   public static String getVersion() {
-    return "0.1.0";
+    return "0.1.1";
   }
 }
