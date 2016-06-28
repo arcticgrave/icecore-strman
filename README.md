@@ -4,12 +4,12 @@ IceCore - String Manipulation
 Lightweight module library as part of the [IceCore](https://bitbucket.org/arcticicestudio/icecore) engine to manipulate- and modify strings.
 
 ### Version
-[`0.1.0`](https://bitbucket.org/arcticicestudio/icecore-strman/downloads)  
+[`0.1.1`](https://bitbucket.org/arcticicestudio/icecore-strman/downloads)  
 
 For older versions check out the private [Bitbucket Git Repository](https://bitbucket.org/arcticicestudio/icecore-strman).
 
 ### Changelog
-[`0.1.0`](CHANGELOG.md)
+[`0.1.1`](CHANGELOG.md)
 
 ### Development
 #### Workflow
