@@ -3,7 +3,7 @@
 title     String Manipulation Public API Test +
 project   icecore-strman                      +
 file      StrmanTest.java                     +
-version   0.1.1                               +
+version   0.2.0                               +
 author    Arctic Ice Studio                   +
 email     development@arcticicestudio.com     +
 website   http://arcticicestudio.com          +
