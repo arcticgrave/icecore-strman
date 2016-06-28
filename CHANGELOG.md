@@ -1,6 +1,13 @@
 IceCore - String Manipulation
 =============================
 
+## 0.2.0 (2016-06-28)
+### Improvements
+#### API
+##### Performance
+  - Improved the case comparision performance and reduced the string creation.
+  The `+ isLowerCase(String) : boolean` and `+ isUpperCase(String) : boolean` methods created unnecessary strings while comparing. Changed the logic to compare each single character and return `false` as soon as the case doesn't match.
+
 ## 0.1.1 (2016-06-28)
 ### Bug Fixes
 #### API

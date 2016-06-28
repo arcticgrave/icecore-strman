@@ -1113,6 +1113,6 @@ public abstract class Strman {
    * @see <a href="http://semver.org">SemVer</a>
    */
   public static String getVersion() {
-    return "0.1.1";
+    return "0.2.0";
   }
 }
