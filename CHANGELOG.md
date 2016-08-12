@@ -1,5 +1,4 @@
-IceCore - String Manipulation
-=============================
+![](https://bitbucket.org/arcticicestudio/icecore-strman/raw/develop/src/main/assets/media/icecore-strman-banner.png)
 
 ## 0.2.0 (2016-06-28)
 ### Improvements
