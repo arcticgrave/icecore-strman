@@ -1,6 +1,6 @@
 /*
 +++++++++++++++++++++++++++++++++++++++++++
-title     String Manipulation Public API  +
+title     Strman Public API               +
 project   icecore-strman                  +
 file      Strman.java                     +
 version   0.1.1                           +
@@ -8,22 +8,7 @@ author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
-created   2016-06-18 09:54 UTC+0200       +
-modified  2016-06-28 17:48 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
-
-[Description]
-Manipulates- and modifies strings.
-Serves as the entry point to the "IceCore - String Manipulation" public API.
-
-[Copyright]
-Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
-
-[References]
-Java 8 API Documentation
-  (https://docs.oracle.com/javase/8/docs/api/)
-Arctic Versioning Specification (ArcVer)
-  (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.strman;
 
@@ -44,14 +29,13 @@ import static java.util.stream.Collectors.joining;
 
 /**
  * Manipulates- and modifies strings.
- *
  * <p>
  *   Serves as the entry point to the
- *   <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a> public API.
+ *   <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a> public API.
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
+ * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
  * @since 0.1.0
  */
 public abstract class Strman {
