@@ -8,21 +8,7 @@ author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
-created   2016-06-18 14:37 UTC+0200       +
-modified  2016-06-18 16:27 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
-
-[Description]
-Tests the "IceCore - Strman" public API class "Strman".
-
-[Copyright]
-Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
-
-[References]
-Java 8 API Documentation
-  (https://docs.oracle.com/javase/8/docs/api/)
-Arctic Versioning Specification (ArcVer)
-  (http://specs.arcticicestudio.com/arcver)
 */
 
 package com.arcticicestudio.icecore.strman;

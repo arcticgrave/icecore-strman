@@ -8,22 +8,7 @@ author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
-created   2016-06-18 09:54 UTC+0200       +
-modified  2016-06-28 17:48 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
-
-[Description]
-Manipulates- and modifies strings.
-Serves as the entry point to the "IceCore - String Manipulation" public API.
-
-[Copyright]
-Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
-
-[References]
-Java 8 API Documentation
-  (https://docs.oracle.com/javase/8/docs/api/)
-Arctic Versioning Specification (ArcVer)
-  (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.strman;
 
