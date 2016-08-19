@@ -332,8 +332,10 @@ public class StrmanTest {
     final String[] fixture = {
       "yo", "yogurt", "yoGURT"
     };
-    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
-    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
+    assertThat(Arrays.stream(fixture).map(el ->
+      ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
+    assertThat(Arrays.stream(fixture).map(el ->
+      ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
   }
 
   @Test
@@ -724,7 +726,8 @@ public class StrmanTest {
       "camel_case",
       "     camel_case",
     };
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toCameCase(%s) should be camelCase", el), toCamelCase(el), equalTo("camelCase")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toCameCase(%s) should be camelCase", el), toCamelCase(el), equalTo("camelCase")));
 
     assertThat(toCamelCase("c"), equalTo("c"));
   }
@@ -743,7 +746,10 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toDecamelize(%s) should be de-camelize", el), toDecamelize(el, null), equalTo("de camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(
+        String.format("toDecamelize(%s) should be de-camelize", el), toDecamelize(el, null), equalTo("de camelize"))
+    );
 
     assertThat(toDecamelize("camelCase", "_"), equalTo("camel_case"));
   }
@@ -762,7 +768,8 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toKebabCase(%s) should be de-camelize", el), toKebabCase(el), equalTo("de-camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toKebabCase(%s) should be de-camelize", el), toKebabCase(el), equalTo("de-camelize")));
   }
 
   @Test
@@ -779,6 +786,7 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
 }
