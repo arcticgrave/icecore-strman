@@ -442,6 +442,19 @@ public class StrmanTest {
     assertThat(isUpperCase("yogurt"), equalTo(false));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldJoinStringArrayIntoASingleString() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    assertThat(join(strings, ";"), is(equalTo("hello;world;123")));
+  }
+
   @Test
   public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
     assertThat(last("yo", 2), equalTo("yo"));
