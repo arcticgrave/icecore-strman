@@ -468,6 +468,15 @@ public class StrmanTest {
     join(strings, null);
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldReturnEmptyStringWhenInputArrayIsEmpty() throws Exception {
+    String[] emptyArray = {};
+    assertThat(join(emptyArray, ","), is(equalTo("")));
+  }
+
   @Test
   public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
     assertThat(last("yo", 2), equalTo("yo"));
