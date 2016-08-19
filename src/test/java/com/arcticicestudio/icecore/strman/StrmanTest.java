@@ -86,6 +86,20 @@ public class StrmanTest {
     assertThat(between("", "{", "}"), arrayContaining(""));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void capitalize_shouldCapitalizeFirstCharacterOfString() throws Exception {
+    String[] strings = {
+      "YOGURT",
+      "yOGURT",
+      "yogurt"
+    };
+    Arrays.stream(strings).forEach(el ->
+      assertThat(String.format("%s should be Yogurt", el), capitalize(el), equalTo("Yogurt")));
+  }
+
   @Test
   public void chars_shouldReturnAllCharactersInString() throws Exception {
     final String yogurt = "yogurt";
