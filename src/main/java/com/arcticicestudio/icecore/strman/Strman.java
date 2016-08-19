@@ -141,6 +141,24 @@ public abstract class Strman {
   }
 
   /**
+   * Converts the first character of a string to upper case and the remaining to lower case.
+   *
+   * @param input the string to capitalize
+   * @return the capitalized string
+   * @throws IllegalArgumentException when input is {@code null}
+   * @since 0.3.0
+   */
+  public static String capitalize(final String input) throws IllegalArgumentException {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    if (input.length() == 0) {
+      return "";
+    }
+    return head(input).toUpperCase() + tail(input).toLowerCase();
+  }
+
+  /**
    * Splits a string into characters.
    *
    * @param value the initial string
