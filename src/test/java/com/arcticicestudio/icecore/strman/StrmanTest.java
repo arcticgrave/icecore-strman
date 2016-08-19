@@ -455,6 +455,19 @@ public class StrmanTest {
     assertThat(join(strings, ";"), is(equalTo("hello;world;123")));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void join_shouldThrowExceptionWhenSeparatorIsNull() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    join(strings, null);
+  }
+
   @Test
   public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
     assertThat(last("yo", 2), equalTo("yo"));
