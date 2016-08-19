@@ -589,9 +589,10 @@ public abstract class Strman {
    * @param strings The input array to concatenate
    * @param separator The separator to use
    * @return the concatenated string
+   * @throws IllegalArgumentException if separator is null
    * @since 0.3.0
    */
-  public static String join(final String[] strings, final String separator) {
+  public static String join(final String[] strings, final String separator) throws IllegalArgumentException {
     if (strings == null) {
       throw new IllegalArgumentException("Input array can't be null");
     }
