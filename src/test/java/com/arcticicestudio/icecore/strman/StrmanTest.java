@@ -456,6 +456,41 @@ public class StrmanTest {
     assertThat(isUpperCase("yogurt"), equalTo(false));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldJoinStringArrayIntoASingleString() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    assertThat(join(strings, ";"), is(equalTo("hello;world;123")));
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void join_shouldThrowExceptionWhenSeparatorIsNull() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    join(strings, null);
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldReturnEmptyStringWhenInputArrayIsEmpty() throws Exception {
+    String[] emptyArray = {};
+    assertThat(join(emptyArray, ","), is(equalTo("")));
+  }
+
   @Test
   public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
     assertThat(last("yo", 2), equalTo("yo"));

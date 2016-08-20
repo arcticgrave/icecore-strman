@@ -599,6 +599,32 @@ public abstract class Strman {
   }
 
   /**
+   * Concatenates all the elements of the string array into a single string.
+   * <p>
+   *   The separator string is placed between elements in the resulting string.
+   * </p>
+   *
+   * @param strings The input array to concatenate
+   * @param separator The separator to use
+   * @return the concatenated string
+   * @throws IllegalArgumentException if separator is null
+   * @since 0.3.0
+   */
+  public static String join(final String[] strings, final String separator) throws IllegalArgumentException {
+    if (strings == null) {
+      throw new IllegalArgumentException("Input array can't be null");
+    }
+    if (separator == null) {
+      throw new IllegalArgumentException("separator can't be null");
+    }
+    StringJoiner joiner = new StringJoiner(separator);
+    for (String el : strings) {
+      joiner.add(el);
+    }
+    return joiner.toString();
+  }
+
+  /**
    * Returns the last specified number of characters of the string.
    *
    * @param value the string to search
