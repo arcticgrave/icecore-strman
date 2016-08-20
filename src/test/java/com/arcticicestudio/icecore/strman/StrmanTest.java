@@ -1,28 +1,14 @@
 /*
-+++++++++++++++++++++++++++++++++++++++++++++++
-title     String Manipulation Public API Test +
-project   icecore-strman                      +
-file      StrmanTest.java                     +
-version   0.2.0                               +
-author    Arctic Ice Studio                   +
-email     development@arcticicestudio.com     +
-website   http://arcticicestudio.com          +
-copyright Copyright (C) 2016                  +
-created   2016-06-18 14:37 UTC+0200           +
-modified  2016-06-18 16:27 UTC+0200           +
-+++++++++++++++++++++++++++++++++++++++++++++++
-
-[Description]
-Tests the "IceCore - String Manipulation" public API class "Strman".
-
-[Copyright]
-Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
-
-[References]
-Java 8 API Documentation
-  (https://docs.oracle.com/javase/8/docs/api/)
-Arctic Versioning Specification (ArcVer)
-  (http://specs.arcticicestudio.com/arcver)
++++++++++++++++++++++++++++++++++++++++++++
+title     Strman Public API Test          +
+project   icecore-strman                  +
+file      StrmanTest.java                 +
+version   0.3.0                           +
+author    Arctic Ice Studio               +
+email     development@arcticicestudio.com +
+website   http://arcticicestudio.com      +
+copyright Copyright (C) 2016              +
++++++++++++++++++++++++++++++++++++++++++++
 */
 
 package com.arcticicestudio.icecore.strman;
@@ -45,11 +31,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
+ * Tests the <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
  * public API class {@link Strman}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
+ * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
  */
 public class StrmanTest {
 
@@ -98,6 +84,20 @@ public class StrmanTest {
   public void between_shouldReturnFullStringWhenStartAndEndDoesNotExist() throws Exception {
     assertThat(between("[abc][def]", "{", "}"), arrayContaining("[abc][def]"));
     assertThat(between("", "{", "}"), arrayContaining(""));
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void capitalize_shouldCapitalizeFirstCharacterOfString() throws Exception {
+    String[] strings = {
+      "YOGURT",
+      "yOGURT",
+      "yogurt"
+    };
+    Arrays.stream(strings).forEach(el ->
+      assertThat(String.format("%s should be Yogurt", el), capitalize(el), equalTo("Yogurt")));
   }
 
   @Test
@@ -346,8 +346,10 @@ public class StrmanTest {
     final String[] fixture = {
       "yo", "yogurt", "yoGURT"
     };
-    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
-    assertThat(Arrays.stream(fixture).map(el -> ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
+    assertThat(Arrays.stream(fixture).map(el ->
+      ensureRight(el, "gurt", false)).collect(toList()), hasItems("yogurt", "yogurt", "yoGURT"));
+    assertThat(Arrays.stream(fixture).map(el ->
+      ensureRight(el, "gurt")).collect(toList()), hasItems("yogurt", "yogurt", "yoGURTgurt"));
   }
 
   @Test
@@ -454,6 +456,41 @@ public class StrmanTest {
     assertThat(isUpperCase("yogurt"), equalTo(false));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldJoinStringArrayIntoASingleString() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    assertThat(join(strings, ";"), is(equalTo("hello;world;123")));
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void join_shouldThrowExceptionWhenSeparatorIsNull() throws Exception {
+    String[] strings = {
+      "hello",
+      "world",
+      "123"
+    };
+    join(strings, null);
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void join_shouldReturnEmptyStringWhenInputArrayIsEmpty() throws Exception {
+    String[] emptyArray = {};
+    assertThat(join(emptyArray, ","), is(equalTo("")));
+  }
+
   @Test
   public void last_shouldReturnLastSpecifiedNumberOfCharacters() throws Exception {
     assertThat(last("yo", 2), equalTo("yo"));
@@ -511,6 +548,16 @@ public class StrmanTest {
   public void leftTrim_shouldRemoveSpacesOnLeft() throws Exception {
     assertThat(leftTrim("     yogurt"), equalTo("yogurt"));
     assertThat(leftTrim("     yogurt  "), equalTo("yogurt  "));
+  }
+
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void lowerFirst_shouldLowercasedFirstCharacterOfString() throws Exception {
+    assertThat(lowerFirst("YOGURT"),is(equalTo("yOGURT")));
+    assertThat(lowerFirst("yogurt"),is(equalTo("yogurt")));
+    assertThat(lowerFirst("Yogurt"),is(equalTo("yogurt")));
   }
 
   @Test
@@ -738,7 +785,8 @@ public class StrmanTest {
       "camel_case",
       "     camel_case",
     };
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toCameCase(%s) should be camelCase", el), toCamelCase(el), equalTo("camelCase")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toCameCase(%s) should be camelCase", el), toCamelCase(el), equalTo("camelCase")));
 
     assertThat(toCamelCase("c"), equalTo("c"));
   }
@@ -757,7 +805,10 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toDecamelize(%s) should be de-camelize", el), toDecamelize(el, null), equalTo("de camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(
+        String.format("toDecamelize(%s) should be de-camelize", el), toDecamelize(el, null), equalTo("de camelize"))
+    );
 
     assertThat(toDecamelize("camelCase", "_"), equalTo("camel_case"));
   }
@@ -776,7 +827,8 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toKebabCase(%s) should be de-camelize", el), toKebabCase(el), equalTo("de-camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toKebabCase(%s) should be de-camelize", el), toKebabCase(el), equalTo("de-camelize")));
   }
 
   @Test
@@ -793,6 +845,7 @@ public class StrmanTest {
       "     de_camelize"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
+    Arrays.stream(fixture).forEach(el ->
+      assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
 }

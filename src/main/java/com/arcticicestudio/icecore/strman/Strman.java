@@ -1,29 +1,14 @@
 /*
 +++++++++++++++++++++++++++++++++++++++++++
-title     String Manipulation Public API  +
+title     Strman Public API               +
 project   icecore-strman                  +
 file      Strman.java                     +
-version   0.1.1                           +
+version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
 copyright Copyright (C) 2016              +
-created   2016-06-18 09:54 UTC+0200       +
-modified  2016-06-28 17:48 UTC+0200       +
 +++++++++++++++++++++++++++++++++++++++++++
-
-[Description]
-Manipulates- and modifies strings.
-Serves as the entry point to the "IceCore - String Manipulation" public API.
-
-[Copyright]
-Copyright (C) 2016 Arctic Ice Studio <development@arcticicestudio.com>
-
-[References]
-Java 8 API Documentation
-  (https://docs.oracle.com/javase/8/docs/api/)
-Arctic Versioning Specification (ArcVer)
-  (http://specs.arcticicestudio.com/arcver)
 */
 package com.arcticicestudio.icecore.strman;
 
@@ -33,7 +18,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 import java.util.StringJoiner;
-import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -44,14 +28,13 @@ import static java.util.stream.Collectors.joining;
 
 /**
  * Manipulates- and modifies strings.
- *
  * <p>
  *   Serves as the entry point to the
- *   <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a> public API.
+ *   <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a> public API.
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - String Manipulation</a>
+ * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
  * @since 0.1.0
  */
 public abstract class Strman {
@@ -155,6 +138,24 @@ public abstract class Strman {
 
     String[] parts = value.split(end);
     return Arrays.stream(parts).map(subPart -> subPart.substring(subPart.indexOf(start) + start.length())).toArray(String[]::new);
+  }
+
+  /**
+   * Converts the first character of a string to upper case and the remaining to lower case.
+   *
+   * @param input the string to capitalize
+   * @return the capitalized string
+   * @throws IllegalArgumentException when input is {@code null}
+   * @since 0.3.0
+   */
+  public static String capitalize(final String input) throws IllegalArgumentException {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    if (input.length() == 0) {
+      return "";
+    }
+    return head(input).toUpperCase() + tail(input).toLowerCase();
   }
 
   /**
@@ -598,6 +599,32 @@ public abstract class Strman {
   }
 
   /**
+   * Concatenates all the elements of the string array into a single string.
+   * <p>
+   *   The separator string is placed between elements in the resulting string.
+   * </p>
+   *
+   * @param strings The input array to concatenate
+   * @param separator The separator to use
+   * @return the concatenated string
+   * @throws IllegalArgumentException if separator is null
+   * @since 0.3.0
+   */
+  public static String join(final String[] strings, final String separator) throws IllegalArgumentException {
+    if (strings == null) {
+      throw new IllegalArgumentException("Input array can't be null");
+    }
+    if (separator == null) {
+      throw new IllegalArgumentException("separator can't be null");
+    }
+    StringJoiner joiner = new StringJoiner(separator);
+    for (String el : strings) {
+      joiner.add(el);
+    }
+    return joiner.toString();
+  }
+
+  /**
    * Returns the last specified number of characters of the string.
    *
    * @param value the string to search
@@ -706,6 +733,24 @@ public abstract class Strman {
   public static int length(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     return value.length();
+  }
+
+  /**
+   * Converts the first character of a string to lower case.
+   *
+   * @param input the string to convert
+   * @return the converted string
+   * @throws IllegalArgumentException if the input is null
+   * @since 0.3.0
+   */
+  public static String lowerFirst(final String input) throws IllegalArgumentException {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    if (input.length() == 0) {
+      return "";
+    }
+    return head(input).toLowerCase() + tail(input);
   }
 
   /**
@@ -1113,6 +1158,6 @@ public abstract class Strman {
    * @see <a href="http://semver.org">SemVer</a>
    */
   public static String getVersion() {
-    return "0.2.0";
+    return "0.3.0";
   }
 }
