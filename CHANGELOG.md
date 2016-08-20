@@ -1,5 +1,52 @@
 ![](https://bitbucket.org/arcticicestudio/icecore-strman/raw/develop/src/main/assets/media/icecore-strman-banner.png)
 
+# 0.3.0 (2016-08-20)
+This version introduces some new API methods, migrates the project to [Apache Maven](https://maven.apache.org) and improves the documentation.
+
+## Features
+### API
+Implemented new methods:  
+
+**capitalize**  
+Converts the first character of a string to upper case and the remaining to lower case.  
+> <u>`+ capitalize(String) : String {exceptions=IllegalArgumentException}`</u>  
+```java
+String str = capitalize("yOGURT") // "Yogurt"
+```
+
+**join**  
+Concatenates all the elements of the string array into a single string.  
+The separator string is placed between elements in the resulting string.  
+> <u>`+ join(String[], String) : String {exceptions=IllegalArgumentException}`</u>  
+```java
+String[] array = {"yogurt", "coconut", "chocolate"}
+String str = join(strArray, "-") // "yogurt-coconut-chocolate"
+```
+
+**lowerFirst**  
+Converts the first character of a string to lower case.   
+> <u>`+ lowerFirst(String) : String {exceptions=IllegalArgumentException}`</u>  
+```java
+String str = lowerFirst("Yogurt") // "yogurt"
+```
+
+## Improvements
+### Build Tool
+  - Migrated to [Apache Maven](https://maven.apache.org) based on the [`glacier-apache-maven@0.4.0`](https://github.com/arcticicestudio/glacier-apache-maven) project skeletons
+
+### Documentation
+  - All documentations have been restyled and modernized
+  - Added a "Getting started" section to the `README`
+  - Optimized Java source code comments and removed overhead
+
+**JavaDoc**  
+  - Changed invalid HTML-formatted JavaDoc
+  - Adjusted line length from `80` to full `120` line length
+  - Added missing JavaDoc for internal JUnit test classes
+
+
+
+
 ## 0.2.0 (2016-06-28)
 ### Improvements
 #### API
