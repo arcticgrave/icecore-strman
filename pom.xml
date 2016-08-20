@@ -4,7 +4,7 @@
 title     POM                             +
 project   icecore-strman                  +
 file      pom.xml                         +
-version   0.2.0                           +
+version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 copyright Copyright (C) 2016              +
@@ -69,7 +69,7 @@ Glacier Apache Maven Project
       +- - - - - - -+-->
   <groupId>com.arcticicestudio</groupId>
   <artifactId>icecore-strman</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
   <packaging>jar</packaging>
 
   <!--+- - - - - - - - - - -+

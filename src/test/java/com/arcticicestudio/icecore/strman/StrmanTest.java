@@ -3,7 +3,7 @@
 title     Strman Public API Test          +
 project   icecore-strman                  +
 file      StrmanTest.java                 +
-version   0.2.0                           +
+version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +

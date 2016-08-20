@@ -1,6 +1,6 @@
 ![](https://bitbucket.org/arcticicestudio/icecore-strman/raw/develop/src/main/assets/media/icecore-strman-banner.png)
 
-<img src="https://bitbucket.org/favicon.ico" width=24 height=24/> [![release](https://img.shields.io/badge/release-v0.2.0-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/downloads) [![pre-release](https://img.shields.io/badge/pre--release---_-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/downloads) [![issues](https://img.shields.io/bitbucket/issues-raw/arcticicestudio/icecore-strman.svg?maxAge=86400)](https://bitbucket.org/arcticicestudio/icecore-strman/issues)
+<img src="https://bitbucket.org/favicon.ico" width=24 height=24/> [![release](https://img.shields.io/badge/release-v0.3.0-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/downloads) [![pre-release](https://img.shields.io/badge/pre--release---_-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/downloads) [![issues](https://img.shields.io/bitbucket/issues-raw/arcticicestudio/icecore-strman.svg?maxAge=86400)](https://bitbucket.org/arcticicestudio/icecore-strman/issues)
 
 Lightweight module library as part of the [IceCore](https://bitbucket.org/arcticicestudio/icecore) engine to manipulate- and modify strings.
 
@@ -14,18 +14,18 @@ You can use it as a dependency for your favorite build tool or [download the lat
 <dependency>
   <groupId>com.arcticicestudio</groupId>
   <artifactId>icecore-strman</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 <img src="https://gradle.org/wp-content/uploads/fbrfg/favicon.ico" width=16 height=16/> <a href="https://gradle.org">Gradle</a>
 ```java
-compile(group: 'com.arcticicestudio', name: 'icecore-strman', version: '0.2.0')
+compile(group: 'com.arcticicestudio', name: 'icecore-strman', version: '0.3.0')
 ```
 
 <img src="http://apache.org/favicons/favicon.ico" width=16 height=16/> <a href="https://ant.apache.org/ivy">Apache Ivy</a>
 ```xml
-<dependency org="com.arcticicestudio" name="icecore-strman" rev="0.2.0" />
+<dependency org="com.arcticicestudio" name="icecore-strman" rev="0.3.0" />
 ```   
 
 ### Build
@@ -40,7 +40,7 @@ mvn clean install -Dgpg.keyname=YourGPGKeyId
 ```
 
 ## Development
-[![](https://img.shields.io/badge/Changelog-v0.2.0-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/raw/v0.2.0/CHANGELOG.md)
+[![](https://img.shields.io/badge/Changelog-v0.3.0-blue.svg)](https://bitbucket.org/arcticicestudio/icecore-strman/raw/v0.3.0/CHANGELOG.md)
 
 ### Workflow
 This project follows the [gitflow](http://nvie.com/posts/a-successful-git-branching-model) branching model.

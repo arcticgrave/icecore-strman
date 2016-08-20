@@ -3,7 +3,7 @@
 title     Package Info                    +
 project   icecore-strman                  +
 file      package-info.java               +
-version   0.2.0                           +
+version   0.3.0                           +
 author    Arctic Ice Studio               +
 email     development@arcticicestudio.com +
 website   http://arcticicestudio.com      +
@@ -20,6 +20,6 @@ copyright Copyright (C) 2016              +
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
  * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
- * @version 0.2.0
+ * @version 0.3.0
  */
 package com.arcticicestudio.icecore.strman;
