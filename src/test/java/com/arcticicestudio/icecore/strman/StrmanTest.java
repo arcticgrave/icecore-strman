@@ -550,6 +550,16 @@ public class StrmanTest {
     assertThat(leftTrim("     yogurt  "), equalTo("yogurt  "));
   }
 
+  /**
+   * @since 0.3.0
+   */
+  @Test
+  public void lowerFirst_shouldLowercasedFirstCharacterOfString() throws Exception {
+    assertThat(lowerFirst("YOGURT"),is(equalTo("yOGURT")));
+    assertThat(lowerFirst("yogurt"),is(equalTo("yogurt")));
+    assertThat(lowerFirst("Yogurt"),is(equalTo("yogurt")));
+  }
+
   @Test
   public void prepend_shouldPrependStrings() throws Exception {
     assertThat(prepend("t", "y", "o", "g", "u", "r"), equalTo("yogurt"));

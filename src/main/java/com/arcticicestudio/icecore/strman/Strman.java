@@ -736,6 +736,24 @@ public abstract class Strman {
   }
 
   /**
+   * Converts the first character of a string to lower case.
+   *
+   * @param input the string to convert
+   * @return the converted string
+   * @throws IllegalArgumentException if the input is null
+   * @since 0.3.0
+   */
+  public static String lowerFirst(final String input) throws IllegalArgumentException {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    if (input.length() == 0) {
+      return "";
+    }
+    return head(input).toLowerCase() + tail(input);
+  }
+
+  /**
    * Prepends the specified strings to the string.
    *
    * @param value the initial string
