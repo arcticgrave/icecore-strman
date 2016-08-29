@@ -441,6 +441,14 @@ public class StrmanTest {
     assertThat(isEnclosedBetween("yogurt", "*"), is(false));
   }
 
+  /**
+   * @since 0.4.0
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void isEnclosedBetween_shouldThrowIllegalArgumentExceptionWhenEncloserIsNull() throws Exception {
+    assertThat(isEnclosedBetween("yogurt", null), is(false));
+  }
+
   @Test
   public void isLowerCase_shouldBeTrueWhenStringIsLowerCase() throws Exception {
     assertThat(isLowerCase(""), equalTo(true));
