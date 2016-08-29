@@ -555,9 +555,9 @@ public class StrmanTest {
    */
   @Test
   public void lowerFirst_shouldLowercasedFirstCharacterOfString() throws Exception {
-    assertThat(lowerFirst("YOGURT"),is(equalTo("yOGURT")));
-    assertThat(lowerFirst("yogurt"),is(equalTo("yogurt")));
-    assertThat(lowerFirst("Yogurt"),is(equalTo("yogurt")));
+    assertThat(lowerFirst("YOGURT"), is(equalTo("yOGURT")));
+    assertThat(lowerFirst("yogurt"), is(equalTo("yogurt")));
+    assertThat(lowerFirst("Yogurt"), is(equalTo("yogurt")));
   }
 
   @Test
