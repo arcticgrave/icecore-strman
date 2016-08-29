@@ -848,4 +848,13 @@ public class StrmanTest {
     Arrays.stream(fixture).forEach(el ->
       assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void words_shouldConvertTextToWords() throws Exception {
+    final String line = "This is a string, with words!";
+    assertThat(words(line), is(new String[]{"This", "is", "a", "string", "with", "words"}));
+  }
 }
