@@ -557,6 +557,18 @@ public abstract class Strman {
    * Verifies whether a string is enclosed by encloser.
    *
    * @param input the input string
+   * @param encloser the string which encloses the input string
+   * @return {@code true} if enclosed, {@code false} otherwise
+   * @since 0.4.0
+   */
+  public static boolean isEnclosedBetween(final String input, final String encloser) {
+    return isEnclosedBetween(input, encloser, encloser);
+  }
+
+  /**
+   * Verifies whether a string is enclosed by encloser.
+   *
+   * @param input the input string
    * @param leftEncloser the string which encloses the input string
    * @return {@code true} if enclosed, {@code false} otherwise
    * @since 0.4.0
