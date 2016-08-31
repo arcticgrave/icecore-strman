@@ -848,4 +848,12 @@ public class StrmanTest {
     Arrays.stream(fixture).forEach(el ->
       assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void upperFirst_shouldConvertFirstCharToUpperCase() throws Exception {
+    assertThat(upperFirst("yogurt"), is("Yogurt"));
+  }
 }
