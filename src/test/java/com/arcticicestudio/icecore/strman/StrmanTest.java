@@ -860,4 +860,14 @@ public class StrmanTest {
     assertThat(trimStart(""), is(Optional.empty()));
     assertThat(trimStart(null), is(Optional.empty()));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void trimStart_shouldRemoveSpecialCharactersAtStart() throws Exception {
+    assertThat(trimStart("-_-yogurt-_-", "_", "-"), is(Optional.of("yogurt-_-")));
+    assertThat(trimStart("-_-!yogurt-_-", "_", "-", "!"), is(Optional.of("yogurt-_-")));
+    assertThat(trimStart("-_-#yogurt-_-", "_", "-", "!", "#"), is(Optional.of("yogurt-_-")));
+  }
 }
