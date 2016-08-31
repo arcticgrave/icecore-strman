@@ -1119,6 +1119,23 @@ public abstract class Strman {
   }
 
   /**
+   * Converts the first character of a string to upper case.
+   *
+   * @param input the string to convert
+   * @return the converted string
+   * @since 0.4.0
+   */
+  public static String upperFirst(String input) {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    return head(input)
+      .map(String::toUpperCase)
+      .map(h -> tail(input).map(t -> h + t).orElse(h))
+      .get();
+  }
+
+  /**
    * Splits a string to words.
    *
    * @param value the string to split
