@@ -856,4 +856,12 @@ public class StrmanTest {
   public void upperFirst_shouldConvertFirstCharToUpperCase() throws Exception {
     assertThat(upperFirst("yogurt"), is("Yogurt"));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void upperFirst_shouldReturnSameStringIfFirstCharIsUpperCase() throws Exception {
+    assertThat(upperFirst("YOGURT"), is("YOGURT"));
+  }
 }
