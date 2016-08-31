@@ -155,7 +155,10 @@ public abstract class Strman {
     if (input.length() == 0) {
       return "";
     }
-    return head(input).toUpperCase() + tail(input).toLowerCase();
+    return head(input)
+      .map(String::toUpperCase)
+      .map(h -> tail(input).map(t -> h + t.toLowerCase()).orElse(h))
+      .get();
   }
 
   /**
@@ -478,9 +481,10 @@ public abstract class Strman {
    * @param numberChars the number of characters to return
    * @return the first specified number of characters
    */
-  public static String first(final String value, final int numberChars) {
-    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
-    return value.substring(0, numberChars);
+  public static Optional<String> first(final String value, final int numberChars) {
+    return Optional.ofNullable(value)
+      .filter(v -> !v.isEmpty())
+      .map(v -> v.substring(0, numberChars));
   }
 
   /**
@@ -511,7 +515,7 @@ public abstract class Strman {
    * @param value the string value
    * @return the first character
    */
-  public static String head(final String value) {
+  public static Optional<String> head(final String value) {
     return first(value, 1);
   }
 
@@ -750,7 +754,10 @@ public abstract class Strman {
     if (input.length() == 0) {
       return "";
     }
-    return head(input).toLowerCase() + tail(input);
+    return head(input)
+      .map(String::toLowerCase)
+      .map(h -> tail(input).map(t -> h + t).orElse(h))
+      .get();
   }
 
   /**
@@ -990,9 +997,10 @@ public abstract class Strman {
    * @param value the initial string
    * @return the tail of the given string
    */
-  public static String tail(final String value) {
-    validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
-    return last(value, value.length() - 1);
+  public static Optional<String> tail(final String value) {
+    return Optional.ofNullable(value)
+      .filter(v -> !v.isEmpty())
+      .map(v -> last(v, v.length() - 1));
   }
 
   /**
@@ -1049,7 +1057,11 @@ public abstract class Strman {
   public static String toStudlyCase(final String value) {
     validate(value, NULL_STRING_PREDICATE, NULL_STRING_MSG_SUPPLIER);
     String[] words = collapseWhitespace(value.trim()).split("\\s*(_|-|\\s)\\s*");
-    return Arrays.stream(words).filter(w -> !w.trim().isEmpty()).map(w -> head(w).toUpperCase() + tail(w)).collect(joining());
+    return Arrays.stream(words)
+      .filter(w -> !w.trim().isEmpty())
+      .map(Strman::upperFirst)
+      .collect(joining());
+
   }
 
   /**
