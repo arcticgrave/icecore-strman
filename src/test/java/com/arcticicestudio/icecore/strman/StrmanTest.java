@@ -848,4 +848,16 @@ public class StrmanTest {
     Arrays.stream(fixture).forEach(el ->
       assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void trimStart_shouldRemoveAllWhitespaceAtStart() throws Exception {
+    assertThat(trimStart("   yogurt   "), is(Optional.of("yogurt   ")));
+    assertThat(trimStart("yogurt   "), is(Optional.of("yogurt   ")));
+    assertThat(trimStart("yogurt"), is(Optional.of("yogurt")));
+    assertThat(trimStart(""), is(Optional.empty()));
+    assertThat(trimStart(null), is(Optional.empty()));
+  }
 }
