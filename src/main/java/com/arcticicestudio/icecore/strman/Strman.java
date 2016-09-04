@@ -558,6 +558,39 @@ public abstract class Strman {
   }
 
   /**
+   * Verifies whether a string is enclosed by encloser.
+   *
+   * @param input the input string
+   * @param encloser the string which encloses the input string
+   * @return {@code true} if enclosed, {@code false} otherwise
+   * @since 0.4.0
+   */
+  public static boolean isEnclosedBetween(final String input, final String encloser) {
+    return isEnclosedBetween(input, encloser, encloser);
+  }
+
+  /**
+   * Verifies whether a string is enclosed by encloser.
+   *
+   * @param input the input string
+   * @param leftEncloser the string which encloses the input string
+   * @return {@code true} if enclosed, {@code false} otherwise
+   * @since 0.4.0
+   */
+  public static boolean isEnclosedBetween(final String input, final String leftEncloser, String rightEncloser) {
+    if (input == null) {
+      throw new IllegalArgumentException("input can't be null");
+    }
+    if (leftEncloser == null) {
+      throw new IllegalArgumentException("leftEncloser can't be null");
+    }
+    if (rightEncloser == null) {
+      throw new IllegalArgumentException("rightEncloser can't be null");
+    }
+    return input.startsWith(leftEncloser) && input.endsWith(rightEncloser);
+  }
+
+  /**
    * Verifies if the string consists of lower case characters.
    *
    * @param value the string to verify

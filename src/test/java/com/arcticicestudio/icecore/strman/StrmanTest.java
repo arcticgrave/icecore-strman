@@ -430,6 +430,25 @@ public class StrmanTest {
     assertThat(insert("yo gurt", "asadasd", 100), equalTo("yo gurt"));
   }
 
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void isEnclosedBetween_shouldCheckWhetherStringIsEnclosed() throws Exception {
+    assertThat(isEnclosedBetween("{{yogurt}}", "{{", "}}"), is(true));
+    assertThat(isEnclosedBetween("yogurt", "{{", "}}"), is(false));
+    assertThat(isEnclosedBetween("*yogurt*", "*"), is(true));
+    assertThat(isEnclosedBetween("yogurt", "*"), is(false));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void isEnclosedBetween_shouldThrowIllegalArgumentExceptionWhenEncloserIsNull() throws Exception {
+    assertThat(isEnclosedBetween("yogurt", null), is(false));
+  }
+
   @Test
   public void isLowerCase_shouldBeTrueWhenStringIsLowerCase() throws Exception {
     assertThat(isLowerCase(""), equalTo(true));
