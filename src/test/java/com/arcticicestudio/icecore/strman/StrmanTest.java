@@ -357,7 +357,7 @@ public class StrmanTest {
     final String[] fixture = {
       "yo", "yogurt"
     };
-    Arrays.stream(fixture).forEach(el -> assertThat(first(el, 3), equalTo(Optional.of("yo"))));
+    Arrays.stream(fixture).forEach(el -> assertThat(first(el, 2), equalTo(Optional.of("yo"))));
   }
 
   @Test
