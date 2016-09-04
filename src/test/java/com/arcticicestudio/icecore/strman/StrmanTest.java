@@ -927,4 +927,13 @@ public class StrmanTest {
   public void upperFirst_shouldReturnSameStringIfFirstCharIsUpperCase() throws Exception {
     assertThat(upperFirst("YOGURT"), is("YOGURT"));
   }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void words_shouldConvertTextToWords() throws Exception {
+    final String line = "This is a string, with words!";
+    assertThat(words(line), is(new String[]{"This", "is", "a", "string", "with", "words"}));
+  }
 }
