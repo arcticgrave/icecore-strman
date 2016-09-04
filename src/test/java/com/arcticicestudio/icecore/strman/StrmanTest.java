@@ -727,6 +727,18 @@ public class StrmanTest {
     assertThat(rightTrim("yogurt"), equalTo("yogurt"));
   }
 
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void trimEnd_shouldRemoveAllTrailingWhitespace() throws Exception {
+    assertThat(trimEnd("   yogurt   "), is(Optional.of("   yogurt")));
+    assertThat(trimEnd("yogurt   "), is(Optional.of("yogurt")));
+    assertThat(trimEnd("yogurt"), is(Optional.of("yogurt")));
+    assertThat(trimEnd(""), is(Optional.empty()));
+    assertThat(trimEnd(null), is(Optional.empty()));
+  }
+
   @Test
   public void truncateSafe_shouldSafelyTruncateStrings() throws Exception {
     assertThat(truncateSafe("yo gurt", 0, "."), equalTo(""));
