@@ -1066,7 +1066,7 @@ public abstract class Strman {
   }
 
   /**
-   * Removes leading whitespace from a string.
+   * Removes leading characters from a string.
    *
    * @param input the string to trim
    * @param chars the characters to trim
