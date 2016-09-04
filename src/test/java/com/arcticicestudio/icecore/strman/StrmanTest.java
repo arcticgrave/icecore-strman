@@ -357,7 +357,7 @@ public class StrmanTest {
     final String[] fixture = {
       "yo", "yogurt"
     };
-    Arrays.stream(fixture).forEach(el -> assertThat(first(el, 2), equalTo("yo")));
+    Arrays.stream(fixture).forEach(el -> assertThat(first(el, 3), equalTo(Optional.of("yo"))));
   }
 
   @Test
@@ -366,7 +366,7 @@ public class StrmanTest {
       "yo", "yogurt"
     };
 
-    Arrays.stream(fixture).forEach(el -> assertThat(head(el), equalTo("y")));
+    Arrays.stream(fixture).forEach(el -> assertThat(head(el), equalTo(Optional.of("y"))));
   }
 
   @Test
@@ -847,5 +847,21 @@ public class StrmanTest {
 
     Arrays.stream(fixture).forEach(el ->
       assertThat(String.format("toSnakeCase(%s) should be de_camelize", el), toSnakeCase(el), equalTo("de_camelize")));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void upperFirst_shouldConvertFirstCharToUpperCase() throws Exception {
+    assertThat(upperFirst("yogurt"), is("Yogurt"));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void upperFirst_shouldReturnSameStringIfFirstCharIsUpperCase() throws Exception {
+    assertThat(upperFirst("YOGURT"), is("YOGURT"));
   }
 }
