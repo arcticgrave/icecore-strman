@@ -731,6 +731,16 @@ public class StrmanTest {
    * @since 0.4.0
    */
   @Test
+  public void trimEnd_shouldRemoveAllTrailingSpecialCharacters() throws Exception {
+    assertThat(trimEnd("-_-yogurt-_-", "_", "-"), is(Optional.of("-_-yogurt")));
+    assertThat(trimEnd("-_-yogurt!-_-", "_", "-", "!"), is(Optional.of("-_-yogurt")));
+    assertThat(trimEnd("-_-yogurt#-_-", "_", "-", "!", "#"), is(Optional.of("-_-yogurt")));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
   public void trimEnd_shouldRemoveAllTrailingWhitespace() throws Exception {
     assertThat(trimEnd("   yogurt   "), is(Optional.of("   yogurt")));
     assertThat(trimEnd("yogurt   "), is(Optional.of("yogurt")));
