@@ -894,6 +894,28 @@ public class StrmanTest {
    * @since 0.4.0
    */
   @Test
+  public void trimStart_shouldRemoveAllWhitespaceAtStart() throws Exception {
+    assertThat(trimStart("   yogurt   "), is(Optional.of("yogurt   ")));
+    assertThat(trimStart("yogurt   "), is(Optional.of("yogurt   ")));
+    assertThat(trimStart("yogurt"), is(Optional.of("yogurt")));
+    assertThat(trimStart(""), is(Optional.empty()));
+    assertThat(trimStart(null), is(Optional.empty()));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
+  public void trimStart_shouldRemoveSpecialCharactersAtStart() throws Exception {
+    assertThat(trimStart("-_-yogurt-_-", "_", "-"), is(Optional.of("yogurt-_-")));
+    assertThat(trimStart("-_-!yogurt-_-", "_", "-", "!"), is(Optional.of("yogurt-_-")));
+    assertThat(trimStart("-_-#yogurt-_-", "_", "-", "!", "#"), is(Optional.of("yogurt-_-")));
+  }
+
+  /**
+   * @since 0.4.0
+   */
+  @Test
   public void upperFirst_shouldConvertFirstCharToUpperCase() throws Exception {
     assertThat(upperFirst("yogurt"), is("Yogurt"));
   }
