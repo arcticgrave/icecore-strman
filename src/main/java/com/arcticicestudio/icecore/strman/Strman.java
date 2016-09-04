@@ -1053,6 +1053,19 @@ public abstract class Strman {
   }
 
   /**
+   * Removes trailing whitespaces from a string.
+   *
+   * @param input the string to trim
+   * @return the trimmed string
+   * @since 0.4.0
+   */
+  public static Optional<String> trimEnd(final String input) {
+    return Optional.ofNullable(input)
+      .filter(v -> !v.isEmpty())
+      .map(Strman::rightTrim);
+  }
+
+  /**
    * Unsecured truncation of a string, cutting the independent string of the required position.
    *
    * @param value the initial string
