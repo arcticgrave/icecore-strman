@@ -32,7 +32,7 @@ JFrog Bintray
   <packaging>jar</packaging>
 
   <name>icecore-strman</name>
-  <description>Lightweight Java library to manipulate- and modify strings.</description>
+  <description>A lightweight library to manipulate- and modify strings.</description>
   <url>https://bitbucket.org/arcticicestudio/icecore-strman</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
@@ -260,7 +260,6 @@ JFrog Bintray
       </plugin>
     </plugins>
   </build>
-
 
   <repositories>
     <repository>
