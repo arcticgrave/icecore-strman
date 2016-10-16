@@ -1,4 +1,8 @@
-![](https://bitbucket.org/arcticicestudio/icecore-strman/raw/develop/src/main/assets/media/icecore-strman-banner.png)
+<p align="center"><img src="https://bitbucket.org/arcticicestudio/icecore-strman/raw/develop/src/main/assets/icecore-strman-logo-banner.svg"/></p>
+
+<p align="center"><img src="https://bitbucket.org/favicon.ico" width=24 height=24/> <a href="https://bitbucket.org/arcticicestudio/icecore-strman/downloads"><img src="https://img.shields.io/badge/release-0.2.0-blue.svg"/></a> <a href="https://bitbucket.org/arcticicestudio/icecore-strman/downloads"><img src="https://img.shields.io/badge/pre--release---_-blue.svg"/></a> <img src="http://central.sonatype.org/favicon.ico" width=24 height=24/> <a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.arcticicestudio%22%20AND%20a%3A%22icecore-strman%22"><img src="https://img.shields.io/maven-central/v/com.arcticicestudio/icecore-strman.svg"/></a> <img src="https://oss.sonatype.org/favicon.ico"/> <a href="https://oss.sonatype.org/content/repositories/snapshots/com/arcticicestudio/icecore-strman"><img src="https://img.shields.io/badge/snapshot----blue.svg"/></a> <img src="https://bintray.com/favicon.ico" width=24 height=24/> <a href='https://bintray.com/arcticicestudio/IceCore/icecore-strman/_latestVersion'><img src='https://api.bintray.com/packages/arcticicestudio/IceCore/icecore-strman/images/download.svg'></a></p>
+
+---
 
 # 0.3.0 (2016-08-20)
 This version introduces some new API methods, migrates the project to [Apache Maven](https://maven.apache.org) and improves the documentation.
@@ -44,19 +48,16 @@ String str = lowerFirst("Yogurt") // "yogurt"
   - Adjusted line length from `80` to full `120` line length
   - Added missing JavaDoc for internal JUnit test classes
 
-
-
-
-## 0.2.0 (2016-06-28)
-### Improvements
-#### API
-##### Performance
+# 0.2.0 (2016-06-28)
+## Improvements
+### API
+#### Performance
   - Improved the case comparision performance and reduced the string creation.
   The `+ isLowerCase(String) : boolean` and `+ isUpperCase(String) : boolean` methods created unnecessary strings while comparing. Changed the logic to compare each single character and return `false` as soon as the case doesn't match.
 
-## 0.1.1 (2016-06-28)
-### Bug Fixes
-#### API
+# 0.1.1 (2016-06-28)
+## Bug Fixes
+### API
   - Fixed two methods returning an invalid case sensitivity output due to lower case convertation:
 
 | Class | Method |
@@ -64,9 +65,9 @@ String str = lowerFirst("Yogurt") // "yogurt"
 | `com.arcticicestudio.icecore.strman.Strman` | `+ removeLeft(String, String, boolean) : String` |
 | `com.arcticicestudio.icecore.strman.Strman` | `+ replace(String, String, String, boolean) : String` |
 
-## 0.1.0 (2016-06-18) - Public API
-### Features
-#### API
+# 0.1.0 (2016-06-18) - Public API
+## Features
+### API
   - Implemented public API classes:
 
 | Class | Description |
@@ -147,11 +148,11 @@ String str = lowerFirst("Yogurt") // "yogurt"
 | `com.arcticicestudio.icecore.strman.Strman` | `+ words(String) : String[]` | Splits a string to words. |
 | `com.arcticicestudio.icecore.strman.Strman` | `+ getVersion() : String` | Returns the ArcVer- and SemVer compatible version. |
 
-### Tests
+## Tests
   - Implemented public API test classes:
 
 | Class | Description |
 | ----- | ----------- |
 | `com.arcticicestudio.icecore.strman.StrmanTest` | Tests the "IceCore - String Manipulation" public API class `Strman`. |
 
-## 0.0.0 (2016-06-18) - Project Initialization
+# 0.0.0 (2016-06-18) - Project Initialization
