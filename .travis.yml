@@ -1,12 +1,12 @@
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# title      Travis CI Build Configuration                        +
-# project    icecore-strman                                       +
-# version                                                         +
-# repository https://bitbucket.org/arcticicestudio/icecore-strman +
-# author     Arctic Ice Studio                                    +
-# email      development@arcticicestudio.com                      +
-# copyright  Copyright (C) 2016                                   +
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# title      Travis CI Build Configuration                     +
+# project    icecore-strman                                    +
+# version                                                      +
+# repository https://github.com/arcticicestudio/icecore-strman +
+# author     Arctic Ice Studio                                 +
+# email      development@arcticicestudio.com                   +
+# copyright  Copyright (C) 2016                                +
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #
 # [References]
 # Travis CI Documentation
