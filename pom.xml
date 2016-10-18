@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-title      POM                                                  +
-project    icecore-strman                                       +
-version    0.3.0                                                +
-repository https://bitbucket.org/arcticicestudio/icecore-strman +
-author     Arctic Ice Studio                                    +
-email      development@arcticicestudio.com                      +
-copyright  Copyright (C) 2016                                   +
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      POM                                               +
+project    icecore-strman                                    +
+version    0.3.0                                             +
+repository https://github.com/arcticicestudio/icecore-strman +
+author     Arctic Ice Studio                                 +
+email      development@arcticicestudio.com                   +
+copyright  Copyright (C) 2016                                +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 [References]
 Apache Maven
@@ -33,7 +33,7 @@ JFrog Bintray
 
   <name>icecore-strman</name>
   <description>A lightweight library to manipulate- and modify strings.</description>
-  <url>https://bitbucket.org/arcticicestudio/icecore-strman</url>
+  <url>https://github.com/arcticicestudio/icecore-strman</url>
   <inceptionYear>2016</inceptionYear>
   <organization>
     <name>Arctic Ice Studio</name>
@@ -94,15 +94,15 @@ JFrog Bintray
   </properties>
 
   <scm>
-    <connection>scm:git:https://bitbucket.org/arcticicestudio/icecore-strman.git</connection>
-    <developerConnection>scm:git:git://git@bitbucket.org:arcticicestudio/icecore-strman.git</developerConnection>
+    <connection>scm:git:https://github.com/arcticicestudio/icecore-strman.git</connection>
+    <developerConnection>scm:git:git://git@github.com:arcticicestudio/icecore-strman.git</developerConnection>
     <tag>HEAD</tag>
-    <url>https://bitbucket.org/arcticicestudio/icecore-strman</url>
+    <url>https://github.com/arcticicestudio/icecore-strman</url>
   </scm>
 
   <issueManagement>
-    <system>Bitbucket</system>
-    <url>https://bitbucket.org/arcticicestudio/icecore-strman/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/arcticicestudio/icecore-strman/issues</url>
   </issueManagement>
 
   <dependencies>
@@ -355,7 +355,7 @@ JFrog Bintray
     <profile>
       <id>jfrog</id>
       <distributionManagement>
-        <downloadUrl>https://bitbucket.org/arcticicestudio/icecore-strman</downloadUrl>
+        <downloadUrl>https://github.com/arcticicestudio/icecore-strman</downloadUrl>
           <snapshotRepository>
             <id>bintray</id>
             <name>OSS JFrog</name>
@@ -372,7 +372,7 @@ JFrog Bintray
     <profile>
       <id>oss-sonatype</id>
       <distributionManagement>
-        <downloadUrl>https://bitbucket.org/arcticicestudio/icecore-strman</downloadUrl>
+        <downloadUrl>https://github.com/arcticicestudio/icecore-strman</downloadUrl>
         <snapshotRepository>
           <id>ossrh</id>
           <name>OSS Sonatype</name>

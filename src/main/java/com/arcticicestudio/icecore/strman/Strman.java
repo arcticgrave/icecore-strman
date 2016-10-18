@@ -1,14 +1,13 @@
 /*
-+++++++++++++++++++++++++++++++++++++++++++
-title     Strman Public API               +
-project   icecore-strman                  +
-file      Strman.java                     +
-version   0.3.0                           +
-author    Arctic Ice Studio               +
-email     development@arcticicestudio.com +
-website   http://arcticicestudio.com      +
-copyright Copyright (C) 2016              +
-+++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      Strman Public API                                 +
+project    icecore-strman                                    +
+version    0.3.0                                             +
+repository https://github.com/arcticicestudio/icecore-strman +
+author     Arctic Ice Studio                                 +
+email      development@arcticicestudio.com                   +
+copyright  Copyright (C) 2016                                +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 package com.arcticicestudio.icecore.strman;
 
@@ -30,17 +29,17 @@ import static java.util.stream.Collectors.joining;
  * Manipulates- and modifies strings.
  * <p>
  *   Serves as the entry point to the
- *   <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a> public API.
+ *   <a href="https://github.com/arcticicestudio/icecore-strman">IceCore Strman</a> public API.
  * </p>
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
+ * @see <a href="https://github.com/arcticicestudio/icecore-strman">IceCore Strman</a>
  * @since 0.1.0
  */
 public abstract class Strman {
 
   private static final Predicate<String> NULL_STRING_PREDICATE = str -> str == null;
-  private static final Supplier<String> NULL_STRING_MSG_SUPPLIER = () -> "'value' should be not null.";
+  private static final Supplier<String> NULL_STRING_MSG_SUPPLIER = () -> "'value' should not be null.";
 
   /*
    * Avoid class instantiation.

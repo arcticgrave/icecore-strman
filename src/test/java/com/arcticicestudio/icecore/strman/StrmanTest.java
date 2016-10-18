@@ -1,16 +1,14 @@
 /*
-+++++++++++++++++++++++++++++++++++++++++++
-title     Strman Public API Test          +
-project   icecore-strman                  +
-file      StrmanTest.java                 +
-version   0.3.0                           +
-author    Arctic Ice Studio               +
-email     development@arcticicestudio.com +
-website   http://arcticicestudio.com      +
-copyright Copyright (C) 2016              +
-+++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+title      Strman Public API Test                            +
+project    icecore-strman                                    +
+version    0.3.0                                             +
+repository https://github.com/arcticicestudio/icecore-strman +
+author     Arctic Ice Studio                                 +
+email      development@arcticicestudio.com                   +
+copyright  Copyright (C) 2016                                +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
-
 package com.arcticicestudio.icecore.strman;
 
 import org.junit.Test;
@@ -31,11 +29,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Tests the <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
+ * Tests the <a href="https://github.com/arcticicestudio/icecore-strman">IceCore Strman</a>
  * public API class {@link Strman}.
  *
  * @author Arctic Ice Studio &lt;development@arcticicestudio.com&gt;
- * @see <a href="https://bitbucket.org/arcticicestudio/icecore-strman">IceCore - Strman</a>
+ * @see <a href="https://github.com/arcticicestudio/icecore-strman">IceCore Strman</a>
  */
 public class StrmanTest {
 
