@@ -42,7 +42,7 @@ public abstract class Strman {
   private static final Supplier<String> NULL_STRING_MSG_SUPPLIER = () -> "'value' should not be null.";
 
   /**
-   * Holds the current public API version of this library.
+   * Holds the version of the public API.
    *
    * @since 0.4.0
    */
@@ -1278,9 +1278,9 @@ public abstract class Strman {
   }
 
   /**
-   * Returns the ArcVer- and SemVer compatible version.
+   * Returns the ArcVer / SemVer version of the public API.
    *
-   * @return the ArcVer and SemVer compatible version
+   * @return the ArcVer / SemVer version string
    * @see <a href="https://github.com/arcticicestudio/arcver">ArcVer</a>
    * @see <a href="http://semver.org">SemVer</a>
    */
