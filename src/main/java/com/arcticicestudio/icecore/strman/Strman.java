@@ -41,6 +41,13 @@ public abstract class Strman {
   private static final Predicate<String> NULL_STRING_PREDICATE = str -> str == null;
   private static final Supplier<String> NULL_STRING_MSG_SUPPLIER = () -> "'value' should not be null.";
 
+  /**
+   * Holds the current public API version of this library.
+   *
+   * @since 0.4.0
+   */
+  public static final String VERSION = "0.3.0";
+
   /*
    * Avoid class instantiation.
    */
@@ -1278,6 +1285,6 @@ public abstract class Strman {
    * @see <a href="http://semver.org">SemVer</a>
    */
   public static String getVersion() {
-    return "0.3.0";
+    return VERSION;
   }
 }
